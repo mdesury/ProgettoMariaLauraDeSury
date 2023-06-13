@@ -1,9 +1,8 @@
 import 'zone.js/dist/zone';
 import { bootstrapApplication } from '@angular/platform-browser';
-import { RootModule } from './root/root.module';
-import { RootComponent } from '.root/root.component';
+import { RootComponent } from './root/root.component'
 
-bootstrapApplication(RootModule);
+bootstrapApplication(RootComponent);
 
 
 /*import { Component } from '@angular/core';
