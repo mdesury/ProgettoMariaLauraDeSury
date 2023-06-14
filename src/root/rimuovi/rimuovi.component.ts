@@ -9,6 +9,7 @@ import { Archivio } from './../Objects/Archivio';
 export class RimuoviComponent implements OnInit {
   archivio = new Archivio();
 
+
   rimuoviLibro() {
 
     let elimina = document.getElementById('codice') as HTMLInputElement;
