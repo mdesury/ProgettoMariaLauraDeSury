@@ -1,8 +1,9 @@
 import 'zone.js/dist/zone';
-import { bootstrapApplication } from '@angular/platform-browser';
-import { RootComponent } from './root/root.component'
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { RootModule } from './root/root.module';
 
-bootstrapApplication(RootComponent);
+platformBrowserDynamic().bootstrapModule(RootModule)
+  .catch(err => console.error(err));
 
 
 /*import { Component } from '@angular/core';
