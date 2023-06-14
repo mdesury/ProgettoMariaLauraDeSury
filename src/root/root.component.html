@@ -21,6 +21,7 @@
 </head>
 
 <body>
+  <app-rimuovi></app-rimuovi>
   <app-ricerca></app-ricerca>
   <app-aggiungi></app-aggiungi>
   <h1 class="center">BIBLIOTECA</h1>
@@ -32,6 +33,12 @@
         <th class="center">Autore</th>
         <th class="center">Codice</th>
         <th class="center">Prestito</th>
+      </tr>
+      <tr *ngFor="let libro of lista">
+        <td class="center">{{libro.titolo}}</td>
+        <td class="center"> {{libro.autore}}</td>
+        <td class="center">{{libro.codice}}</td>
+        <td class="center">{{libro.prestito}}</td>
       </tr>
     </thead>
   </table>
