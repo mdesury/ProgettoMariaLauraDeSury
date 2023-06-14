@@ -6,10 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./ricerca.component.css']
 })
 export class RicercaComponent implements OnInit {
+  trovaLibro() {
+    // Implementazione del metodo trovaLibro()
+  }
 
   constructor() { }
 
   ngOnInit() {
   }
-
 }
