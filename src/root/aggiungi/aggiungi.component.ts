@@ -9,6 +9,7 @@ import { Archivio } from './../Objects/Archivio';
 export class AggiungiComponent implements OnInit {
   archivio = new Archivio();
   lista = this.archivio.lista;
+  errore: string = '';
 
   aggiungiLibro() {
     let Ititolo = document.getElementById('titolo') as HTMLInputElement;
@@ -16,9 +17,11 @@ export class AggiungiComponent implements OnInit {
     let Icodice = document.getElementById('codice') as HTMLInputElement;
 
     if (!Ititolo.value || !Iautore.value || !Icodice.value) {
-      alert('Bisogna compilare tutti i campi! Riprova.');
-      console.log(this.archivio.lista);
+      this.errore = 'Bisogna compilare tutti i campi! Riprova.';
     } else {
+      this.errore = ''; // Resetta il messaggio di errore
+      console.log(this.archivio.lista);
+  
       this.archivio.aggiungiLibro(Ititolo.value, Iautore.value, Icodice.value);
     }
   }
