@@ -20,9 +20,9 @@ export class AggiungiComponent implements OnInit {
       this.errore = 'Bisogna compilare tutti i campi! Riprova.';
     } else {
       this.errore = ''; // Resetta il messaggio di errore
-      console.log(this.archivio.lista);
-  
+      
       this.archivio.aggiungiLibro(Ititolo.value, Iautore.value, Icodice.value);
+      console.log(this.archivio.lista);
     }
   }
  
