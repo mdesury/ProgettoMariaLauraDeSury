@@ -41,13 +41,16 @@
       <th class="center">Autore</th>
       <th class="center">Codice</th>
       <th class="center">Prestito</th>
-    </tr>
+      <th class="center">Rimuovi</th>
+      
     <tr *ngFor="let libro of lista">
       <td class="center">{{libro.titolo}}</td>
-      <td class="center"> {{libro.autore}}</td>
+      <td class="center">{{libro.autore}}</td>
       <td class="center">{{libro.codice}}</td>
       <td class="center">{{libro.prestito}}</td>
-    </tr>
+      <td class="center">
+        <button (click)="rimuoviLibro(libro.codice)">Elimina</button>
+      </tr>
   </thead>
 </table>
 </div>

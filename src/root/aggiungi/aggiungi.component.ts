@@ -22,6 +22,12 @@ export class AggiungiComponent implements OnInit {
       this.archivio.aggiungiLibro(Ititolo.value, Iautore.value, Icodice.value);
     }
   }
+ 
+  rimuoviLibro(codice: string) {
+    this.archivio.rimuoviLibro(codice);
+    this.lista = this.archivio.lista;
+    console.log(this.archivio.lista);
+  }
 
   constructor() { }
 
