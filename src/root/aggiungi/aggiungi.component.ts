@@ -8,6 +8,7 @@ import { Archivio } from './../Objects/Archivio';
 })
 export class AggiungiComponent implements OnInit {
     archivio = new Archivio();
+    lista = this.archivio.lista;
 
     aggiungiLibro() {
       let Ititolo = document.getElementById('titolo') as HTMLInputElement;
@@ -21,9 +22,7 @@ export class AggiungiComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.archivio.aggiungiLibro('Harry Potter', 'JK Rowling', 'ISBN123');
-    this.archivio.aggiungiLibro('Il Signore degli Anelli', 'J.R.R. Tolkien', 'ISBN456');
-    this.archivio.aggiungiLibro('Il Signore degli Anelli', 'J.R.R. Tolkien', 'ISB456');
+   
   }
 
 }

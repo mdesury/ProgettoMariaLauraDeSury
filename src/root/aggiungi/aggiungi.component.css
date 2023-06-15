@@ -1,0 +1,51 @@
+
+div, button, input {
+  font-family: Calibri, 'Trebuchet MS', sans-serif;
+	font-size: 13px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 300;
+	line-height: 17px;
+}
+
+button {
+  font-weight: bold;
+}
+
+.page {
+  left: 0px;
+  top: 0px;
+  width: 8.5in;
+  height: 11in;
+  margin: 0.5in 0 0 0 ;
+}
+
+.header {
+  padding: 0 0.125in 0.125in 0;
+  vertical-align: middle;
+  display: table-cell;
+}
+
+.label-div {
+  width: 2.625in;
+  height: 1in;
+  margin: 0;
+  float: left;
+  text-align: left;
+  vertical-align: center;
+  overflow: hidden;
+  outline: 1px dashed;
+  display: table;
+}
+
+.label-span {
+  padding: 0.125in;
+  vertical-align:middle;
+  display: table-cell;
+}
+
+.spacer {
+  width: 0.125in;
+  height: 1in;
+  float: left;
+}

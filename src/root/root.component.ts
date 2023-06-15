@@ -14,12 +14,6 @@ export class RootComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.archivio.aggiungiLibro('Harry Potter', 'JK Rowling', 'IBN123');
-    this.archivio.aggiungiLibro('Il Signore degli Anelli', 'J.R.R. Tolkien', 'ISBN456');
-    this.archivio.aggiungiLibro('Il Signore degli Anelli', 'J.R.R. Tolkien', 'ISBNN456');
-
-    this.archivio.ricercaLibro("ss");
-    this.archivio.trovaLibro('ISB456');
 
   }
 

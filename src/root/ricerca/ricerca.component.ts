@@ -9,6 +9,7 @@ import { Archivio } from './../Objects/Archivio';
 export class RicercaComponent implements OnInit {
 
   archivio = new Archivio();
+  
 
   ricercaLibro() {
     console.log(this.archivio.lista);
@@ -21,8 +22,5 @@ export class RicercaComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
-    this.archivio.aggiungiLibro('Harry Potter', 'JK Rowling', 'ISBN123');
-    this.archivio.aggiungiLibro('Il Signore degli Anelli', 'J.R.R. Tolkien', 'ISBN456');
-    this.archivio.aggiungiLibro('Il Signore degli Anelli', 'J.R.R. Tolkien', 'ISB456');
   }
 }

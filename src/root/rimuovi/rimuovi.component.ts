@@ -8,9 +8,9 @@ import { Archivio } from './../Objects/Archivio';
 })
 export class RimuoviComponent implements OnInit {
   archivio = new Archivio();
+  lista: any[] = [];
 
-
-  rimuoviLibro() {
+  rimuoviLibro(codice: string) {
 
     let elimina = document.getElementById('codice') as HTMLInputElement;
     this.archivio.rimuoviLibro(elimina.value);
@@ -20,8 +20,6 @@ export class RimuoviComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.archivio.aggiungiLibro('Harry Potter', 'JK Rowling', 'ISBN123');
-    this.archivio.aggiungiLibro('Il Signore degli Anelli', 'J.R.R. Tolkien', 'ISBN456');
-    this.archivio.aggiungiLibro('Il Codice Da Vinci', 'Dan Brown', 'ISBN789');
+   
   }
 }
