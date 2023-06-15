@@ -1,4 +1,22 @@
 <div>
+  <head>
+    <style>
+      .center {
+        text-align: center;
+      }
+  
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+  
+      th, td {
+        border: 1px solid black;
+        padding: 8px;
+        text-align: left;
+      }
+    </style>
+  </head>
   <span class="header">
     Titolo<br />
   <input type="text" id="titolo" placeholder="Inserisci il titolo del libro">
@@ -15,4 +33,21 @@
   <br />
   <button type="button" (click)="aggiungiLibro()">Aggiungi</button>
 </span>
+
+<table>
+  <thead>
+    <tr>
+      <th class="center">Titolo</th>
+      <th class="center">Autore</th>
+      <th class="center">Codice</th>
+      <th class="center">Prestito</th>
+    </tr>
+    <tr *ngFor="let libro of lista">
+      <td class="center">{{libro.titolo}}</td>
+      <td class="center"> {{libro.autore}}</td>
+      <td class="center">{{libro.codice}}</td>
+      <td class="center">{{libro.prestito}}</td>
+    </tr>
+  </thead>
+</table>
 </div>

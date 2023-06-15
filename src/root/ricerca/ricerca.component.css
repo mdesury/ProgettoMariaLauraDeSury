@@ -6,7 +6,7 @@
   border-radius: 10px;
   overflow: hidden;
   padding: 8px;
-  width: 250px;
+  width: 350px;
 }
 
 .modulo-ricerca #search {
@@ -21,17 +21,11 @@
   float: left;
   font: 16px Lucida Sans, Trebuchet MS, Tahoma, sans-serif;
   box-sizing: border-box;
-  height: 42px;
-  padding: 10px;
+  height: 30px;
+  padding: 9px;
   width: 490px;
 }
 
-.modulo-ricerca #search:-moz-placeholder,
-.modulo-ricerca #search:-ms-input-placeholder,
-.modulo-ricerca #search::-webkit-input-placeholder {
-  color: #999;
-  font-weight: normal;
-}
 
 .modulo-ricerca #submit {
   background-color: #00994D;
@@ -41,7 +35,7 @@
   border-radius: 3px;
   color: #FFF;
   cursor: pointer;
-  height: 42px;
+  height: 30px;
   float: right;
   font: 15px Arial, Helvetica;
   padding: 0;

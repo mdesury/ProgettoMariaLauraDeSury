@@ -22,5 +22,9 @@ export class RicercaComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
+    this.archivio.aggiungiLibro('Harry Potter', 'JK Rowling', 'ISBN123');
+    this.archivio.aggiungiLibro('Il Signore degli Anelli', 'J.R.R. Tolkien', 'ISBN456');
+    this.archivio.aggiungiLibro('Il Signore degli Anelli', 'J.R.R. Tolkien', 'ISB456');
+
   }
 }
