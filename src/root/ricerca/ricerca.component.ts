@@ -12,8 +12,8 @@ export class RicercaComponent implements OnInit {
   
 
   ricercaLibro() {
-    console.log(this.archivio.lista);
     let chiave = document.getElementById('trovaLibro') as HTMLInputElement;
+    
 
     // Implementazione del metodo trovaLibro()
     console.log(this.archivio.ricercaLibro(chiave.value));
@@ -22,9 +22,6 @@ export class RicercaComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
-    this.archivio.aggiungiLibro('Harry Potter', 'JK Rowling', 'ISBN123');
-    this.archivio.aggiungiLibro('Il Signore degli Anelli', 'J.R.R. Tolkien', 'ISBN456');
-    this.archivio.aggiungiLibro('Il Signore degli Anelli', 'J.R.R. Tolkien', 'ISB456');
 
   }
 }

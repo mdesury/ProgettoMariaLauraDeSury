@@ -8,6 +8,7 @@ import { Archivio } from './Objects/Archivio';
 })
 export class RootComponent implements OnInit {
  
+  
   archivio = new Archivio();
   lista = this.archivio.lista;
 

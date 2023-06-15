@@ -35,6 +35,10 @@ rimuoviLibro(codice: string) {
   });
 }
 
+getLibri() {
+  return this.lista;
+}
+
 /*trovaLibroPrestato(codice: string) {
   return this.libriPrestati.filter(libro => {
     return libro.codice === codice;

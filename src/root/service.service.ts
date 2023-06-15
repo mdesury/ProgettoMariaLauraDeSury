@@ -1,27 +1,25 @@
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { ajax, AjaxResponse } from 'rxjs/ajax';
+import { Libro } from './Objects/Libro';
 
 @Injectable({
   providedIn: 'root',
+
 })
 
 export class Service {
-  private URL: string =
+  URL: string =
     'https://eu-central-1.aws.data.mongodb-api.com/app/kvaas-giwjg/endpoint/';
-  private key: string = '60b8351b';
+  apiKey: string = '60b8351b';
 
-  constructor(private http: HttpClient) {}
+  constructor() {}
 
-  new(): Observable<string> {
-    return this.http.get<string>(this.URL + 'new?secret=ssw2022');
-  }
-  
-  get(): Observable<string> {
-    return this.http.get<string>(this.URL + 'get?key' + this.key)
-  }
-
-  set(ciccio: string): Observable<string> {
-    return this.http.post<string>(this.URL + 'set?key' + this.key, ciccio);
-  }
+  public getData(Biblioteca: string): Observable<AjaxResponse<any>> {
+    return ajax({
+      method: 'GET',
+      url: this.URL+Biblioteca,
+      crossDomain: true,
+    });
+}
 }
