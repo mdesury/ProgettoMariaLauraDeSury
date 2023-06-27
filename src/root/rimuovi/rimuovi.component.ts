@@ -10,12 +10,12 @@ import {Service} from "./../service.service";
 })
 export class RimuoviComponent implements OnInit {
   archivio = new Archivio(this.servizio);
+  @Input() libro = new Libro("", "", "", "");
   lista: any[] = [];
 
   rimuoviLibro(codice: string) {
 
-    let elimina = document.getElementById('codice') as HTMLInputElement;
-    this.archivio.rimuoviLibro(elimina.value);
+    this.archivio.rimuoviLibro(this.libro.codice);
     this.servizio.set(JSON.stringify(this.archivio.lista)).subscribe();
   }
 
