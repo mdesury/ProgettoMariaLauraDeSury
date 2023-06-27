@@ -50,7 +50,8 @@
       <td class="center">{{libro.codice}}</td>
       <td class="center">{{libro.prestito}}</td>
       <td class="center">
-        <button (click)="rimuoviLibro(libro.codice)">Elimina</button>
+      <app-rimuovi [libro] = "libro"/>
+
       </tr>
   </thead>
 </table>

@@ -26,12 +26,6 @@ export class AggiungiComponent implements OnInit {
     this.servizio.set(JSON.stringify(this.archivio.lista)).subscribe();
     }
   }
- 
-  rimuoviLibro(codice: string) {
-    this.archivio.rimuoviLibro(codice);
-    this.lista = this.archivio.lista;
-    this.servizio.set(JSON.stringify(this.archivio.lista)).subscribe();
-  }
 
   constructor(private servizio: Service) { }
 

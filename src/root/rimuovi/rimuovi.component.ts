@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Archivio } from './../Objects/Archivio';
+import { Libro } from './../Objects/Libro';
 import {Service} from "./../service.service";
 
 @Component({
