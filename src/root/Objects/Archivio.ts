@@ -1,12 +1,22 @@
 import { Libro } from "./Libro";
+import {Service} from "./../service.service";
 
 export class Archivio {
   lista: Array<Libro>
   libriPrestati: Array<Libro>
+  servizio: Service;
 
-constructor() {
+constructor(servizio: Service) {
   this.lista = new Array<Libro>;
+  this.servizio = servizio;
   this.libriPrestati = []
+
+  this.servizio.get().subscribe((risultato) => {
+    let elenco = JSON.parse(risultato);
+    elenco.map((libro: any) => {
+      this.aggiungiLibro(libro.titolo, libro.autore, libro.codice)
+    })
+  })
 }
 
 ricercaLibro(chiave: string) {

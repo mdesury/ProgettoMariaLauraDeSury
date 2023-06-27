@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Archivio } from './Objects/Archivio';
+import {Service} from "./service.service";
 
 @Component({
   selector: 'app-root',
@@ -9,10 +10,10 @@ import { Archivio } from './Objects/Archivio';
 export class RootComponent implements OnInit {
  
   
-  archivio = new Archivio();
+  archivio = new Archivio(this.servizio);
   lista = this.archivio.lista;
 
-  constructor() { }
+  constructor(private servizio: Service) { }
 
   ngOnInit() {
 

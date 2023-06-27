@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Archivio } from './../Objects/Archivio';
+import {Service} from "./../service.service";
 
 @Component({
   selector: 'app-rimuovi',
@@ -7,17 +8,17 @@ import { Archivio } from './../Objects/Archivio';
   styleUrls: ['./rimuovi.component.css']
 })
 export class RimuoviComponent implements OnInit {
-  archivio = new Archivio();
+  archivio = new Archivio(this.servizio);
   lista: any[] = [];
 
   rimuoviLibro(codice: string) {
 
     let elimina = document.getElementById('codice') as HTMLInputElement;
     this.archivio.rimuoviLibro(elimina.value);
-    console.log(this.archivio.lista);
+    this.servizio.set(JSON.stringify(this.archivio.lista)).subscribe();
   }
 
-  constructor() { }
+  constructor(private servizio: Service) { }
 
   ngOnInit() {
    

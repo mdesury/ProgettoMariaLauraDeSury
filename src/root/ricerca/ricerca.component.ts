@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Archivio } from './../Objects/Archivio';
+import {Service} from "./../service.service";
 
 @Component({
   selector: 'app-ricerca',
@@ -8,7 +9,7 @@ import { Archivio } from './../Objects/Archivio';
 })
 export class RicercaComponent implements OnInit {
 
-  archivio = new Archivio();
+  archivio = new Archivio(this.servizio);
   
 
   ricercaLibro() {
@@ -19,7 +20,7 @@ export class RicercaComponent implements OnInit {
     console.log(this.archivio.ricercaLibro(chiave.value));
   }
 
-  constructor() {}
+  constructor(private servizio: Service) {}
 
   ngOnInit() {
 

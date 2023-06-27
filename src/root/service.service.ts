@@ -1,6 +1,6 @@
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
-import { ajax, AjaxResponse } from 'rxjs/ajax';
+import { HttpClient } from "@angular/common/http";
 import { Libro } from './Objects/Libro';
 
 @Injectable({
@@ -13,13 +13,14 @@ export class Service {
     'https://eu-central-1.aws.data.mongodb-api.com/app/kvaas-giwjg/endpoint/';
   apiKey: string = '60b8351b';
 
-  constructor() {}
+  constructor(private http: HttpClient) {}
 
-  public getData(Biblioteca: string): Observable<AjaxResponse<any>> {
-    return ajax({
-      method: 'GET',
-      url: this.URL+Biblioteca,
-      crossDomain: true,
-    });
-}
+  public get(): Observable<string> {
+    return this.http.get<string>(this.URL + "get?key=" + this.apiKey);
+  }
+
+  public set(newData: string): Observable<string> {
+    return this.http.post<string>(this.URL + "set?key=" + this.apiKey, newData);
+  }
+
 }

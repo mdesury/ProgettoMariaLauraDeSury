@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Archivio } from './../Objects/Archivio';
+import {Service} from "./../service.service";
 
 @Component({
   selector: 'app-aggiungi',
@@ -7,7 +8,7 @@ import { Archivio } from './../Objects/Archivio';
   styleUrls: ['./aggiungi.component.css']
 })
 export class AggiungiComponent implements OnInit {
-  archivio = new Archivio();
+  archivio = new Archivio(this.servizio);
   lista = this.archivio.lista;
   errore: string = '';
 
@@ -17,22 +18,22 @@ export class AggiungiComponent implements OnInit {
     let Icodice = document.getElementById('codice') as HTMLInputElement;
 
     if (!Ititolo.value || !Iautore.value || !Icodice.value) {
-      this.errore = 'Bisogna compilare tutti i campi! Riprova.';
+      this.errore = 'Devi compilare tutti i campi.';
     } else {
-      this.errore = ''; // Resetta il messaggio di errore
+      this.errore = ''; 
       
       this.archivio.aggiungiLibro(Ititolo.value, Iautore.value, Icodice.value);
-      console.log(this.archivio.lista);
+    this.servizio.set(JSON.stringify(this.archivio.lista)).subscribe();
     }
   }
  
   rimuoviLibro(codice: string) {
     this.archivio.rimuoviLibro(codice);
     this.lista = this.archivio.lista;
-    console.log(this.archivio.lista);
+    this.servizio.set(JSON.stringify(this.archivio.lista)).subscribe();
   }
 
-  constructor() { }
+  constructor(private servizio: Service) { }
 
   ngOnInit() {
    
