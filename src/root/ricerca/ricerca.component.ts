@@ -17,7 +17,8 @@ export class RicercaComponent implements OnInit {
     
 
     // Implementazione del metodo trovaLibro()
-    console.log(this.archivio.ricercaLibro(chiave.value));
+    this.archivio.ricercaLibro(chiave.value);
+    this.servizio.set(JSON.stringify(this.archivio.lista)).subscribe();
   }
 
   constructor(private servizio: Service) {}
