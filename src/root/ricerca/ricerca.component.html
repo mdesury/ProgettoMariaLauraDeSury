@@ -3,7 +3,7 @@
   <button type="button" id="trovaLibro" (click)="ricercaLibro()">Ricerca</button>
 </form>
 
-<div *ngIf="risultatiRicerca.length === 0 && ricerca !== ''">
+<div *ngIf="mostraNessunLibroTrovato && risultatiRicerca.length === 0">
   <p>Nessun libro trovato</p>
 </div>
 
@@ -14,3 +14,4 @@
     <p>Codice: {{ libro.codice }}</p>
   </div>
 </div>
+

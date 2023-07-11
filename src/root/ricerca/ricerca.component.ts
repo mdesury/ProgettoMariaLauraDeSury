@@ -12,22 +12,28 @@ export class RicercaComponent implements OnInit {
   archivio = new Archivio(this.servizio);
   risultatiRicerca: Array<any> = []; // Variabile per memorizzare i risultati della ricerca
   ricerca: string = '';
+  mostraNessunLibroTrovato: boolean = false;
+
   
   ricercaLibro() {
     let chiave = (document.getElementById('trovaLibro') as HTMLInputElement).value;
   
     if (chiave.trim() === '') {
       this.risultatiRicerca = []; // Barra di ricerca vuota, assegna un array vuoto come risultato
+      this.mostraNessunLibroTrovato = false; // Nascondi la scritta "Nessun libro trovato"
     } else {
       this.risultatiRicerca = this.archivio.ricercaLibro(chiave);
   
       if (this.risultatiRicerca.length === 0) {
-        this.ricerca = 'Nessun libro trovato'; 
+        this.mostraNessunLibroTrovato = true; // Mostra la scritta "Nessun libro trovato"
+      } else {
+        this.mostraNessunLibroTrovato = false; // Nascondi la scritta "Nessun libro trovato"
       }
     }
   
     this.servizio.set(JSON.stringify(this.archivio.lista)).subscribe();
   }
+  
   
 
   constructor(private servizio: Service) {}
