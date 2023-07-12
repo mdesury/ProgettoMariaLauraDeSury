@@ -38,15 +38,15 @@
 <table>
   <thead>
     <tr>
+      <th class="center">Codice</th>
       <th class="center">Titolo</th>
       <th class="center">Autore</th>
-      <th class="center">Codice</th>
       <th class="center">Rimuovi</th>
       
     <tr *ngFor="let libro of lista">
+      <td class="center">{{libro.codice}}</td>
       <td class="center">{{libro.titolo}}</td>
       <td class="center">{{libro.autore}}</td>
-      <td class="center">{{libro.codice}}</td>
       <td class="center">
       <app-rimuovi [libro] = "libro"/>
 
