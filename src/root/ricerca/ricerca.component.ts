@@ -35,9 +35,15 @@ export class RicercaComponent implements OnInit {
     
     this.servizio.set(JSON.stringify(this.archivio.lista)).subscribe();
   } 
+
+  prestitoLibro() {
+    if (this.risultatiRicerca.length === 1) {
+      let libro = this.risultatiRicerca[0];
+      libro.disponibile = false;
+      this.servizio.set(JSON.stringify(this.archivio.lista)).subscribe();
+    }
+  }
    
-  
-  
 
   constructor(private servizio: Service) {}
 
@@ -45,4 +51,3 @@ export class RicercaComponent implements OnInit {
 
   }
 }
-
