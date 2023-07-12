@@ -1,73 +1,76 @@
 import { Libro } from "./Libro";
-import {Service} from "./../service.service";
+import { Service } from "./../service.service";
 
 export class Archivio {
-  lista: Array<Libro>
-  libriPrestati: Array<Libro>
+  lista: Array<Libro>;
+  libriPrestati: Array<Libro>;
   servizio: Service;
 
-constructor(servizio: Service) {
-  this.lista = new Array<Libro>;
-  this.servizio = servizio;
-  this.libriPrestati = []
+  constructor(servizio: Service) {
+    this.lista = new Array<Libro>();
+    this.servizio = servizio;
+    this.libriPrestati = [];
 
-  this.servizio.get().subscribe((risultato) => {
-    let elenco = JSON.parse(risultato);
-    elenco.map((libro: any) => {
-      this.aggiungiLibro(libro.titolo, libro.autore, libro.codice)
-    })
-  })
-}
-
-ricercaLibro(chiave: string) {
- return this.lista.filter(libro => {
-    return libro.titolo.toLowerCase().includes(chiave.toLowerCase()) ||
-    libro.autore.toLowerCase().includes(chiave.toLowerCase()) ||
-    libro.codice.toLowerCase().includes(chiave.toLowerCase())
-  });
-} 
-
-trovaLibro(codice: string) {
-  return this.lista.filter(libro => {
-    return libro.codice === codice;
-  })[0];
-}
-
-aggiungiLibro(titolo: string, autore: string, codice: string) {
-  if (!this.trovaLibro(codice)) {
-    this.lista.push(new Libro(titolo, autore, codice, ""));
+    this.servizio.get().subscribe((risultato) => {
+      let elenco = JSON.parse(risultato);
+      elenco.map((libro: any) => {
+        this.aggiungiLibro(libro.titolo, libro.autore, libro.codice);
+      });
+    });
   }
-}
-  
-rimuoviLibro(codice: string) {
-    this.lista = this.lista.filter(libro => {
-      return libro.codice !== codice
-  });
-}
 
-getLibri() {
-  return this.lista;
-}
-
-/*trovaLibroPrestato(codice: string) {
-  return this.libriPrestati.filter(libro => {
-    return libro.codice === codice;
-  });
-}
-prestitoLibro(codice: string) {
-  const libro = this.trovaLibro(codice);
-  if (libro !== libro.prestito) {
-    this.libriPrestati.push(libro);
-    libro.prestito = true;
+  ricercaLibro(chiave: string) {
+    return this.lista.filter((libro) => {
+      return (
+        libro.titolo.toLowerCase().includes(chiave.toLowerCase()) ||
+        libro.autore.toLowerCase().includes(chiave.toLowerCase()) ||
+        libro.codice.toLowerCase().includes(chiave.toLowerCase())
+      );
+    });
   }
+
+  trovaLibro(codice: string) {
+    return this.lista.filter((libro) => {
+      return libro.codice === codice;
+    })[0];
   }
+
+  aggiungiLibro(titolo: string, autore: string, codice: string) {
+    if (!this.trovaLibro(codice)) {
+      this.lista.push(new Libro(titolo, autore, codice));
+    }
+  }
+
+  rimuoviLibro(codice: string) {
+    this.lista = this.lista.filter((libro) => {
+      return libro.codice !== codice;
+    });
+  }
+
+  getLibri() {
+    return this.lista;
+  }
+
+  aggiungiLibroPrestato(codice: string) {
+    let libro = this.trovaLibro(codice);
+    if (libro) {
+      libro.prestaLibro();
+      this.libriPrestati.push(libro);
+      this.rimuoviLibro(codice);
+    }
+  }
+
+  restituisciLibro(codice: string) {
+    let libro = this.trovaLibro(codice);
+    if (libro) {
+      libro.restituisciLibro();
+      this.aggiungiLibro(libro.titolo, libro.autore, libro.codice);
+      this.libriPrestati = this.libriPrestati.filter(
+        (lib) => lib.codice !== codice
+      );
+    }
+  }
+
 }
 
-retitusciLibro() {
-  if (this.prestito === true) {
-    return this.prestito;
-  }
-}*/
-
-}
 

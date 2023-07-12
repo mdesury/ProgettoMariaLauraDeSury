@@ -2,13 +2,21 @@ export class Libro {
   titolo: string;
   autore: string;
   codice: string;
-  prestito: string;
+  inPrestito: boolean;
 
-  constructor(titolo:string, autore:string, codice:string, prestito: string) {
+  constructor(titolo:string, autore:string, codice:string) {
     this.titolo = titolo;
     this.autore = autore;
     this.codice = codice;
-    this.prestito = prestito;
+    this.inPrestito = false;
+  }
+
+  prestaLibro() {
+    this.inPrestito = true;
+  }
+
+  restituisciLibro() {
+    this.inPrestito = false;
   }
 }
  
