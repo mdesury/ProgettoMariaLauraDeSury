@@ -35,7 +35,7 @@ export class RicercaComponent implements OnInit {
     
     this.servizio.set(JSON.stringify(this.archivio.lista)).subscribe();
   } 
-  
+   
   
   
 
