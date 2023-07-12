@@ -1,17 +1,20 @@
 <form class="modulo-ricerca">
   <input id="trovaLibro" type="text" placeholder="Cerca per..." required [(ngModel)]="ricerca" name="ricercaInput">
   <button type="button" id="trovaLibro" (click)="ricercaLibro()">Ricerca</button>
-</form>
-
-<div *ngIf="mostraNessunLibroTrovato && risultatiRicerca.length === 0">
+  </form>
+  
+  <div *ngIf="mostraNessunLibroTrovato && risultatiRicerca.length === 0">
   <p>Nessun libro trovato</p>
-</div>
-
-<div *ngIf="risultatiRicerca.length > 0">
+  </div>
+  
+  <div *ngIf="risultatiRicerca.length === 1">
   <div *ngFor="let libro of risultatiRicerca">
     <p>Titolo: {{ libro.titolo }}</p>
     <p>Autore: {{ libro.autore }}</p>
     <p>Codice: {{ libro.codice }}</p>
   </div>
-</div>
-
+  </div>
+  
+  <div *ngIf="risultatiRicerca.length > 1">
+  <p>Numero di corrispondenze: {{ risultatiRicerca.length }}</p>
+  </div>

@@ -26,13 +26,16 @@ export class RicercaComponent implements OnInit {
   
       if (this.risultatiRicerca.length === 0) {
         this.mostraNessunLibroTrovato = true; // Mostra la scritta "Nessun libro trovato"
+      } else if (this.risultatiRicerca.length === 1) {
+        console.log("Libro trovato");
       } else {
-        this.mostraNessunLibroTrovato = false; // Nascondi la scritta "Nessun libro trovato"
+        console.log("Numero di corrispondenze: " + this.risultatiRicerca.length);
       }
     }
   
     this.servizio.set(JSON.stringify(this.archivio.lista)).subscribe();
   }
+  
   
   
 
