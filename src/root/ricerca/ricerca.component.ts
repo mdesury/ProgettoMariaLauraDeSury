@@ -32,7 +32,7 @@ export class RicercaComponent implements OnInit {
         console.log("Numero di corrispondenze: " + this.risultatiRicerca.length);
       }
     }
-  
+    
     this.servizio.set(JSON.stringify(this.archivio.lista)).subscribe();
   } 
   
