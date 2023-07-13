@@ -56,14 +56,18 @@ export class RicercaComponent {
   }
 
   prendiInPrestito(libro: any) {
-    if (libro && !libro.inPrestito && this.personaInPrestito.trim() !== '') {
-      this.archivio.prestitoLibro(libro.codice);
+    if (libro && !libro.inPrestito && libro.personaInPrestito.trim() === '') {
+      this.archivio.prestitoLibro(libro.codice, this.personaInPrestito);
       libro.inPrestito = true;
+      libro.personaInPrestito = this.personaInPrestito;
       this.mostraPulsantePrestito = false;
       this.mostraPulsanteRestituzione = true;
-      this.mostraCampoNome = true; // Mostra il campo nome dopo aver preso in prestito il libro
+    } else {
+      console.log('Il libro non può essere preso in prestito nuovamente.');
     }
   }
+  
+
 
   restituisciLibro(libro: any) {
     if (libro && libro.inPrestito) {
@@ -73,5 +77,14 @@ export class RicercaComponent {
       this.mostraPulsanteRestituzione = false;
       this.mostraCampoNome = false; // Resetta la visibilità del campo nome dopo la restituzione del libro
     }
+    this.servizio.set(JSON.stringify(this.archivio.lista)).subscribe(
+      (response) => {
+        console.log('Dati salvati sul server:', response);
+      },
+      (error) => {
+        console.error('Errore durante il salvataggio dei dati sul server:', error);
+      }
+    );
   }
-}
+  }
+

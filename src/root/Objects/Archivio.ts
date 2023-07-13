@@ -57,30 +57,49 @@ export class Archivio {
   getLibri() {
     return this.lista;
   }
-
-  prestitoLibro(codice: string) {
-    let libro = this.trovaLibro(codice);
-    if (libro && !libro.inPrestito) {
-      libro.prestaLibro();
-      this.libriPrestati.push(libro);
-      // Aggiorna il server con la lista modificata di libri
-    }
-  }
   
-  
-
-  restituisciLibro(codice: string) {
+  prestitoLibro(codice: string, persona: string) {
     let libro = this.trovaLibro(codice);
     if (libro) {
-      libro.restituisciLibro();
-      this.aggiungiLibro(libro.titolo, libro.autore, libro.codice);
-      this.libriPrestati = this.libriPrestati.filter(
-        (lib) => lib.codice !== codice
-      );
+      if (libro.inPrestito) {
+        console.log('Il libro è già stato preso in prestito.');
+      } else if (libro.personaInPrestito !== '') {
+        console.log('Il libro è attualmente in prestito a:', libro.personaInPrestito);
+      } else {
+        libro.prestaLibro();
+        libro.personaInPrestito = persona;
+        this.libriPrestati.push(libro);
+        this.servizio.set(JSON.stringify(this.lista)).subscribe(
+          (response) => {
+            console.log('Dati salvati sul server:', response);
+          },
+          (error) => {
+            console.error('Errore durante il salvataggio dei dati sul server:', error);
+          }
+        );
+      }
+    } else {
+      console.log('Il libro non esiste nell\'archivio.');
     }
-    this.servizio.set(JSON.stringify(this.lista)).subscribe();
   }
-
-}
+  
+    restituisciLibro(codice: string) {
+      let libro = this.trovaLibro(codice);
+      if (libro && libro.inPrestito) {
+        libro.restituisciLibro();
+        libro.personaInPrestito = '';
+        this.libriPrestati = this.libriPrestati.filter((lib) => lib.codice !== codice);
+        this.servizio.set(JSON.stringify(this.lista)).subscribe(
+          (response) => {
+            console.log('Dati salvati sul server:', response);
+          },
+          (error) => {
+            console.error('Errore durante il salvataggio dei dati sul server:', error);
+          }
+        );
+      }
+    }
+  }
+  
 
 
