@@ -67,8 +67,6 @@ export class RicercaComponent {
     }
   }
   
-
-
   restituisciLibro(libro: any) {
     if (libro && libro.inPrestito) {
       this.archivio.restituisciLibro(libro.codice);
