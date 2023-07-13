@@ -21,6 +21,24 @@
 
 
 
+<div *ngIf="mostraPulsantePrestito">
+  <input [(ngModel)]="personaInPrestito" placeholder="Nome persona" />
+  <button (click)="prendiInPrestito()">Prendi in prestito</button>
+</div>
+
+<div *ngIf="mostraPulsanteRestituzione">
+  <p>Libro preso in prestito da {{ libroSelezionato.personaInPrestito }}</p>
+  <button (click)="restituisciLibro()">Restituisci</button>
+</div>
+
+
+
+
+
+
+
+
+
   
 
   

@@ -26,8 +26,15 @@ export class Archivio {
         libro.autore.toLowerCase().includes(chiave.toLowerCase()) ||
         libro.codice.toLowerCase().includes(chiave.toLowerCase())
       );
-    });
+    }).concat(this.libriPrestati.filter((libro) => {
+      return (
+        libro.titolo.toLowerCase().includes(chiave.toLowerCase()) ||
+        libro.autore.toLowerCase().includes(chiave.toLowerCase()) ||
+        libro.codice.toLowerCase().includes(chiave.toLowerCase())
+      );
+    }));
   }
+  
 
   trovaLibro(codice: string) {
     return this.lista.filter((libro) => {
@@ -51,14 +58,16 @@ export class Archivio {
     return this.lista;
   }
 
-  aggiungiLibroPrestato(codice: string) {
+  prestitoLibro(codice: string) {
     let libro = this.trovaLibro(codice);
-    if (libro) {
+    if (libro && !libro.inPrestito) {
       libro.prestaLibro();
       this.libriPrestati.push(libro);
-      this.rimuoviLibro(codice);
+      // Aggiorna il server con la lista modificata di libri
     }
   }
+  
+  
 
   restituisciLibro(codice: string) {
     let libro = this.trovaLibro(codice);
@@ -69,6 +78,7 @@ export class Archivio {
         (lib) => lib.codice !== codice
       );
     }
+    this.servizio.set(JSON.stringify(this.lista)).subscribe();
   }
 
 }
