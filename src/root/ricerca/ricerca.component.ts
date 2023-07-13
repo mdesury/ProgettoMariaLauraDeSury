@@ -78,7 +78,7 @@ export class RicercaComponent {
     this.servizio.set(JSON.stringify(this.archivio.lista)).subscribe(
       (response) => {
         console.log('Dati salvati sul server:', response);
-      },
+      }, 
       (error) => {
         console.error('Errore durante il salvataggio dei dati sul server:', error);
       }
