@@ -2,24 +2,16 @@
   <input id="trovaLibro" type="text" placeholder="Cerca per..." required [(ngModel)]="ricerca" name="ricercaInput" (input)="ricercaLibro()">
 </form>
 
- 
-<div *ngIf="mostraNessunLibroTrovato && risultatiRicerca.length === 0">
+<div *ngIf="risultatiRicerca.length === 0 && ricerca !== ''">
   <p>Nessun libro trovato</p>
 </div>
+
 
 <div *ngIf="risultatiRicerca.length === 1">
   <div *ngFor="let libro of risultatiRicerca">
     <p>Titolo: {{ libro.titolo }}</p>
     <p>Autore: {{ libro.autore }}</p>
     <p>Codice: {{ libro.codice }}</p>
-    <ng-container *ngIf="!libro.inPrestito; else restituisciSection">
-      <input type="text" [(ngModel)]="personaInPrestito" placeholder="Nome della persona" required>
-      <button *ngIf="mostraPulsantePrestito" (click)="prendiInPrestito(libro)">Prendi in prestito</button>
-    </ng-container>
-    <ng-template #restituisciSection>
-      <button *ngIf="mostraPulsanteRestituzione" (click)="restituisciLibro(libro)">Restituisci</button>
-    </ng-template>
-    <p *ngIf="libro.inPrestito">Il libro è stato preso in prestito da {{ personaInPrestito }}</p>
   </div>
 </div>
 
