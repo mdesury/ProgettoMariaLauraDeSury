@@ -1,7 +1,7 @@
 <form class="modulo-ricerca">
-  <input id="trovaLibro" type="text" placeholder="Cerca per..." required [(ngModel)]="ricerca" name="ricercaInput">
-  <button type="button" id="trovaLibro" (click)="ricercaLibro()">Ricerca</button>
+  <input id="trovaLibro" type="text" placeholder="Cerca per..." required [(ngModel)]="ricerca" name="ricercaInput" (input)="ricercaLibro()">
 </form>
+
  
 <div *ngIf="mostraNessunLibroTrovato && risultatiRicerca.length === 0">
   <p>Nessun libro trovato</p>

@@ -22,7 +22,7 @@ export class RicercaComponent {
 
   ricercaLibro() {
     let chiave = this.ricerca.trim();
-
+  
     if (chiave === '') {
       this.risultatiRicerca = [];
       this.mostraNessunLibroTrovato = false;
@@ -32,7 +32,7 @@ export class RicercaComponent {
       this.mostraCampoNome = false; // Resetta la visibilità del campo nome
     } else {
       this.risultatiRicerca = this.archivio.ricercaLibro(chiave);
-
+  
       if (this.risultatiRicerca.length === 0) {
         this.mostraNessunLibroTrovato = true;
         this.mostraPulsantePrestito = false;
@@ -54,7 +54,7 @@ export class RicercaComponent {
       }
     }
   }
-
+  
   prendiInPrestito(libro: any) {
     if (libro && !libro.inPrestito && libro.personaInPrestito.trim() === '') {
       this.archivio.prestitoLibro(libro.codice, this.personaInPrestito);
@@ -75,14 +75,7 @@ export class RicercaComponent {
       this.mostraPulsanteRestituzione = false;
       this.mostraCampoNome = false; // Resetta la visibilità del campo nome dopo la restituzione del libro
     }
-    this.servizio.set(JSON.stringify(this.archivio.lista)).subscribe(
-      (response) => {
-        console.log('Dati salvati sul server:', response);
-      }, 
-      (error) => {
-        console.error('Errore durante il salvataggio dei dati sul server:', error);
-      }
-    );
+    this.servizio.set(JSON.stringify(this.archivio.lista)).subscribe();
   }
   }
 
