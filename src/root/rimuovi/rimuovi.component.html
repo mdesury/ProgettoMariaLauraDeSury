@@ -1,1 +1,3 @@
-<button (click)="rimuoviLibro(libro.codice)">Elimina</button>
+<div *ngIf="risultatiRicerca.length === 1">
+  <button (click)="rimuoviLibro(risultatiRicerca[0].codice)">Elimina</button>
+</div>

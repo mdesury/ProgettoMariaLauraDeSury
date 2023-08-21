@@ -12,10 +12,10 @@ export class RimuoviComponent implements OnInit {
   archivio = new Archivio(this.servizio);
   @Input() libro = new Libro("", "", "");
   lista: any[] = [];
+  risultatiRicerca: any[] = [];
 
-  rimuoviLibro(codice: string) {
-
-    this.archivio.rimuoviLibro(this.libro.codice);
+  rimuoviLibro(libro: any) {
+    this.archivio.rimuoviLibro(libro.codice);
     this.servizio.set(JSON.stringify(this.archivio.lista)).subscribe();
   }
 
