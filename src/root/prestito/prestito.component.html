@@ -1,8 +1,2 @@
-<ng-container *ngIf="!libro.inPrestito; else restituisciSection">
-  <input type="text" [(ngModel)]="personaInPrestito" placeholder="Nome della persona" required>
-  <button *ngIf="mostraPulsantePrestito" (click)="prendiInPrestito(libro)">Prendi in prestito</button>
-</ng-container>
-<ng-template #restituisciSection>
-  <button *ngIf="mostraPulsanteRestituzione" (click)="restituisciLibro(libro)">Restituisci</button>
-</ng-template>
-<p *ngIf="libro.inPrestito">Il libro è stato preso in prestito da {{ personaInPrestito }}</p>
+<input type="text" [(ngModel)]="personaInPrestito" placeholder="Nome della persona" required>
+<button *ngIf="libroSelezionato" (click)="prendiInPrestito()">Prendi in prestito</button>

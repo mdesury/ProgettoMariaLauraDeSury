@@ -13,12 +13,17 @@ export class Libro {
     this.personaInPrestito = '';
   }
 
-  prestaLibro() {
-    this.inPrestito = true;
+  prendiInPrestito(persona: string) {
+    if (!this.inPrestito && persona.trim() !== '') {
+      this.inPrestito = true;
+      this.personaInPrestito = persona;
+    }
   }
 
-  restituisciLibro() {
-    this.inPrestito = false;
-    this.personaInPrestito = '';
+  restituisci() {
+    if (this.inPrestito) {
+      this.inPrestito = false;
+      this.personaInPrestito = '';
+    }
   }
 }

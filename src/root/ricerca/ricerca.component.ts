@@ -8,13 +8,13 @@ import { Service } from "./../service.service";
   styleUrls: ['./ricerca.component.css']
 })
 export class RicercaComponent {
-  archivio: Archivio; // Rimuovi l'inizializzazione qui
-
+  archivio: Archivio;
   risultatiRicerca: Array<any> = [];
   ricerca: string = '';
+  mostraPulsantePrestito: boolean = false; // Aggiungi questa variabile
 
   constructor(private servizio: Service) {
-    this.archivio = new Archivio(this.servizio); // Passa l'istanza del servizio al costruttore di Archivio
+    this.archivio = new Archivio(this.servizio);
   }
 
   ricercaLibro() {
@@ -22,8 +22,10 @@ export class RicercaComponent {
 
     if (chiave === '') {
       this.risultatiRicerca = [];
+      this.mostraPulsantePrestito = false; // Resetta la variabile quando non ci sono risultati
     } else {
       this.risultatiRicerca = this.archivio.ricercaLibro(chiave);
+      this.mostraPulsantePrestito = this.risultatiRicerca.length === 1; // Imposta a true quando c'è un solo risultato
     }
   }
 }
