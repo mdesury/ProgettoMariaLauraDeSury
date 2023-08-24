@@ -14,7 +14,6 @@ export class PrestitoComponent {
     if (this.libroInPrestito) {
       this.libroInPrestito.inPrestito = true;
       this.libroInPrestito.personaInPrestito = this.personaInPrestito;
-      // Potresti anche voler aggiornare il tuo servizio con le modifiche
     }
   }
 
