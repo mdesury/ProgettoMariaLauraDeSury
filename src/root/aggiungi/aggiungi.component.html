@@ -1,57 +1,8 @@
-<div *ngIf="errore" class="errore-messaggio">{{ errore }}</div>
-<div>
-  <head>
-    <style>
-      .center {
-        text-align: center;
-      }
-  
-      table {
-        width: 100%;
-        border-collapse: collapse;
-      }
-  
-      th, td {
-        border: 1px solid black;
-        padding: 8px;
-        text-align: left;
-      }
-    </style>
-  </head>
-  <span class="header">
-    Titolo<br />
-  <input type="text" id="titolo" placeholder="Inserisci il titolo del libro">
-  </span>
-  <span class="header">
-    Autore <br />
-  <input type="text" id="autore" placeholder="Inserisci il nome dell'autore">
-</span>
-<span class="header">
-  Codice libro <br />
-  <input type="text" id="codice" placeholder="Inserisci il codice del libro">
-</span>
-<span class="header">
-  <br />
-  <button type="button" (click)="aggiungiLibro()">Aggiungi</button>
-</span>
+<input id="titolo" [(ngModel)]="titolo" placeholder="Titolo">
+<input id="autore" [(ngModel)]="autore" placeholder="Autore">
+<input id="codice" [(ngModel)]="codice" placeholder="Codice">
 
-<table>
-  <thead>
-    <tr>
-      <th class="center">Codice</th>
-      <th class="center">Titolo</th>
-      <th class="center">Autore</th>
-    
-      
-    <tr *ngFor="let libro of lista">
-      <td class="center">{{libro.codice}}</td>
-      <td class="center">{{libro.titolo}}</td>
-      <td class="center">{{libro.autore}}</td>
-    
-      
+<button (click)="aggiungiLibro()">Aggiungi Libro</button>
+<p *ngIf="errore">{{ errore }}</p>
 
-      </tr>
-  </thead>
-</table>
-</div> 
- 
+

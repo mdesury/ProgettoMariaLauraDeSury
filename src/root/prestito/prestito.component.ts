@@ -21,7 +21,6 @@ export class PrestitoComponent {
     if (this.libroInPrestito) {
       this.libroInPrestito.inPrestito = false;
       this.libroInPrestito.personaInPrestito = '';
-      // Potresti anche voler aggiornare il tuo servizio con le modifiche
     }
   }
 }

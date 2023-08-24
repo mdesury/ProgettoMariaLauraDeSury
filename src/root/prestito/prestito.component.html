@@ -4,6 +4,7 @@
   <div *ngIf="!libroInPrestito.inPrestito">
     <input type="text" placeholder="Nome del prestatore" [(ngModel)]="personaInPrestito">
     <button (click)="prendiInPrestito()">Prendi in prestito</button>
+
   </div>
   
   <button *ngIf="libroInPrestito.inPrestito" (click)="restituisciLibro()">Restituisci libro</button>

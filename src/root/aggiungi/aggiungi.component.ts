@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Archivio } from './../Objects/Archivio';
-import {Service} from "./../service.service";
+import { Service } from "./../service.service";
 
 @Component({
   selector: 'app-aggiungi',
@@ -8,26 +8,23 @@ import {Service} from "./../service.service";
   styleUrls: ['./aggiungi.component.css']
 })
 export class AggiungiComponent implements OnInit {
+  titolo: string = '';
+  autore: string = '';
+  codice: string = '';
   archivio = new Archivio(this.servizio);
   lista = this.archivio.lista;
   errore: string = '';
 
   aggiungiLibro() {
-    let Ititolo = document.getElementById('titolo') as HTMLInputElement;
-    let Iautore = document.getElementById('autore') as HTMLInputElement;
-    let Icodice = document.getElementById('codice') as HTMLInputElement;
-
-    if (!Ititolo.value || !Iautore.value || !Icodice.value) {
+    if (!this.titolo || !this.autore || !this.codice) {
       this.errore = 'Devi compilare tutti i campi.';
     } else {
-      this.errore = ''; 
+      this.errore = '';
       
-      this.archivio.aggiungiLibro(Ititolo.value, Iautore.value, Icodice.value);
-    this.servizio.set(JSON.stringify(this.archivio.lista)).subscribe();
+      this.archivio.aggiungiLibro(this.titolo, this.autore, this.codice);
+      this.servizio.set(JSON.stringify(this.archivio.lista)).subscribe();
     }
   }
-
-  
 
   constructor(private servizio: Service) { }
 
