@@ -21,7 +21,7 @@ export class RicercaComponent {
   ricercaLibro() {
     let chiave = this.ricerca.trim();
 
-    if (chiave === '') {
+    if (chiave === '') { 
       this.risultatiRicerca = [];
       this.mostraPulsantePrestito = false; // Resetta la variabile quando non ci sono risultati
     } else {
