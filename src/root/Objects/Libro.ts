@@ -14,16 +14,12 @@ export class Libro {
   }
 
   prendiInPrestito(persona: string) {
-    if (!this.inPrestito && persona.trim() !== '') {
-      this.inPrestito = true;
-      this.personaInPrestito = persona;
-    }
+    this.inPrestito = true;
+    this.personaInPrestito = persona;
   }
 
   restituisci() {
-    if (this.inPrestito) {
-      this.inPrestito = false;
-      this.personaInPrestito = '';
-    }
+    this.inPrestito = false;
+    this.personaInPrestito = '';
   }
 }

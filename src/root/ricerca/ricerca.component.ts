@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Archivio } from './../Objects/Archivio';
 import { Service } from "./../service.service";
+import { Libro } from './../Objects/Libro'; 
 
 @Component({
   selector: 'app-ricerca',
@@ -27,5 +28,10 @@ export class RicercaComponent {
       this.risultatiRicerca = this.archivio.ricercaLibro(chiave);
       this.mostraPulsantePrestito = this.risultatiRicerca.length === 1; // Imposta a true quando c'è un solo risultato
     }
+  }
+
+  prendiInPrestito(libro: Libro, persona: string) {
+    libro.prendiInPrestito(persona);
+    this.servizio.set(JSON.stringify(this.archivio.lista)).subscribe();
   }
 }

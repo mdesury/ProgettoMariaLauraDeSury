@@ -13,9 +13,9 @@
     <p>Autore: {{ libro.autore }}</p>
     <p>Codice: {{ libro.codice }}</p>
   </div> 
-  
-  <!-- Includi il componente RimuoviComponent solo quando c'è una sola corrispondenza -->
+
   <app-rimuovi [libro]="risultatiRicerca[0]"></app-rimuovi>
+  <app-prestito [libroInPrestito]="risultatiRicerca[0]"></app-prestito>
 </div>
 
 <div *ngIf="risultatiRicerca.length > 1">

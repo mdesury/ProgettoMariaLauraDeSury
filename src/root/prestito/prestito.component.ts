@@ -1,54 +1,28 @@
-import { Component, OnInit } from '@angular/core';
-import { Archivio } from './../Objects/Archivio';
-import { Service } from "./../service.service";
-import { Libro } from './../Objects/Libro'; 
+import { Component, Input } from '@angular/core';
+import { Libro } from './../Objects/Libro';
 
 @Component({
   selector: 'app-prestito',
   templateUrl: './prestito.component.html',
   styleUrls: ['./prestito.component.css']
 })
-export class PrestitoComponent implements OnInit {
-  archivio: Archivio;
-  ricerca: string = '';
-  risultatiRicerca: Array<Libro> = [];
-  libroSelezionato: Libro | undefined;
+export class PrestitoComponent {
+  @Input() libroInPrestito: Libro | undefined;
   personaInPrestito: string = '';
 
-  constructor(private servizio: Service) {
-    this.archivio = new Archivio(this.servizio); 
-  }
-
-  cercaLibro() {
-    this.risultatiRicerca = this.archivio.ricercaLibro(this.ricerca);
-  
-  
-    if (this.risultatiRicerca.length === 1) {
-      this.libroSelezionato = this.risultatiRicerca[0];
-    } else {
-      this.libroSelezionato = undefined;
-    }
-  }
-  
-
-  selezionaLibro(libro: Libro) {
-    this.libroSelezionato = libro;
-    this.risultatiRicerca = [];
-  }
-
   prendiInPrestito() {
-    if (this.libroSelezionato) {
-      this.libroSelezionato.prendiInPrestito(this.personaInPrestito);
-      this.personaInPrestito = '';
+    if (this.libroInPrestito) {
+      this.libroInPrestito.inPrestito = true;
+      this.libroInPrestito.personaInPrestito = this.personaInPrestito;
+      // Potresti anche voler aggiornare il tuo servizio con le modifiche
     }
   }
 
   restituisciLibro() {
-    if (this.libroSelezionato) {
-      this.libroSelezionato.restituisci();
+    if (this.libroInPrestito) {
+      this.libroInPrestito.inPrestito = false;
+      this.libroInPrestito.personaInPrestito = '';
+      // Potresti anche voler aggiornare il tuo servizio con le modifiche
     }
-  }
-
-  ngOnInit() {
   }
 }

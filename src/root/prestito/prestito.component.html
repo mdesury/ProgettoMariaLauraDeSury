@@ -1,2 +1,10 @@
-<input type="text" [(ngModel)]="personaInPrestito" placeholder="Nome della persona" required>
-<button *ngIf="libroSelezionato" (click)="prendiInPrestito()">Prendi in prestito</button>
+<div *ngIf="libroInPrestito">
+  <p *ngIf="libroInPrestito.inPrestito">In prestito a: {{ libroInPrestito.personaInPrestito }}</p>
+  
+  <div *ngIf="!libroInPrestito.inPrestito">
+    <input type="text" placeholder="Nome del prestatore" [(ngModel)]="personaInPrestito">
+    <button (click)="prendiInPrestito()">Prendi in prestito</button>
+  </div>
+  
+  <button *ngIf="libroInPrestito.inPrestito" (click)="restituisciLibro()">Restituisci libro</button>
+</div>
