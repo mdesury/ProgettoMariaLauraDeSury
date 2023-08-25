@@ -29,9 +29,4 @@ export class RicercaComponent {
       this.mostraPulsantePrestito = this.risultatiRicerca.length === 1; // Imposta a true quando c'è un solo risultato
     }
   }
-
-  prendiInPrestito(libro: Libro, persona: string) {
-    libro.prendiInPrestito(persona);
-    this.servizio.set(JSON.stringify(this.archivio.lista)).subscribe();
-  }
 }
