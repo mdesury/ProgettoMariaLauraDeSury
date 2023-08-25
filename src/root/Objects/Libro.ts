@@ -16,10 +16,14 @@ export class Libro {
   }
 
   prendiInPrestito(persona: string) {
-    this.personaInPrestito = persona;
+    if (this.libero()) {
+      this.personaInPrestito = persona;
+    }
   }
 
   restituisci() {
-    this.personaInPrestito = '';
+    if (!this.libero()) {
+      this.personaInPrestito = '';
+    }
   }
 }

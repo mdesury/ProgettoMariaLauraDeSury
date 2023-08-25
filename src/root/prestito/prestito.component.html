@@ -1,13 +1,17 @@
 <div *ngIf="libroInPrestito">
-
-  <div *ngIf="libero()">
+  <div *ngIf="libero(); else inPrestitoBlock">
     <input type="text" placeholder="Nome del prestatore" [(ngModel)]="personaInPrestito">
     <button (click)="prendiInPrestito()">Prendi in prestito</button>
   </div>
 
-  <div *ngIf="!libero()">
-    <p>In prestito a: {{ prendiPersonaInPrestito() }}</p>
-    <button (click)="restituisciLibro()">Restituisci libro</button>
-  </div>
+  <ng-template #inPrestitoBlock>
+    <div *ngIf="!libero()">
+      <p>In prestito a: {{ prendiPersonaInPrestito() }}</p>
+      <button (click)="restituisciLibro()">Restituisci libro</button>
+    </div>
+  </ng-template>
 
+  <div *ngIf="libero()">
+    <p>Libro disponibile per il prestito</p>
+  </div>
 </div>
