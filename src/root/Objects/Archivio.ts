@@ -58,6 +58,20 @@ export class Archivio {
     return this.lista;
   }
 
+  prendiInPrestito(codice: string, persona: string) {
+    let libro = this.trovaLibro(codice);
+    if (libro.libero()) {
+      libro.prendiInPrestito(persona);
+    }
+  }
+
+  restituisci(codice: string) {
+    let libro = this.trovaLibro(codice);
+    if (!libro.libero()) {
+      libro.restituisci();
+    }
+
+  }
   }
   
 

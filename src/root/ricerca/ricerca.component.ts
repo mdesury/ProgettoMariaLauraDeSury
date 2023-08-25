@@ -1,3 +1,4 @@
+
 import { Component } from '@angular/core';
 import { Archivio } from './../Objects/Archivio';
 import { Service } from "./../service.service";
@@ -13,6 +14,7 @@ export class RicercaComponent {
   risultatiRicerca: Array<any> = [];
   ricerca: string = '';
   mostraPulsantePrestito: boolean = false; // Aggiungi questa variabile
+  libroTarget: Libro = new Libro('', '', '');
 
   constructor(private servizio: Service) {
     this.archivio = new Archivio(this.servizio);
@@ -27,6 +29,10 @@ export class RicercaComponent {
     } else {
       this.risultatiRicerca = this.archivio.ricercaLibro(chiave);
       this.mostraPulsantePrestito = this.risultatiRicerca.length === 1; // Imposta a true quando c'è un solo risultato
+      if(this.risultatiRicerca.length === 1) {
+        this.mostraPulsantePrestito = true;
+        this.libroTarget = this.risultatiRicerca[0];
+      }
     }
   }
 }
