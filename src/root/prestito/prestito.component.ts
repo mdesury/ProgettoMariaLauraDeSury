@@ -14,6 +14,8 @@ export class PrestitoComponent {
   archivio = new Archivio(this.servizio);
   codice: string = '';
   errore: string = '';
+  isLibroInPrestito: boolean = false;
+
 
   constructor(private servizio: Service) {}
 
@@ -28,6 +30,7 @@ export class PrestitoComponent {
         );
         this.archivio.prendiInPrestito(this.codice, this.personaInPrestito);
         this.servizio.set(JSON.stringify(this.archivio.lista)).subscribe();
+        this.isLibroInPrestito = true;
         console.log('Libro in prestito');
 
       } else {
@@ -51,6 +54,7 @@ export class PrestitoComponent {
         );
         this.archivio.restituisci(this.codice);
         this.servizio.set(JSON.stringify(this.archivio.lista)).subscribe();
+        this.isLibroInPrestito = false;
         console.log('Libro restituito');
 
   
