@@ -15,9 +15,6 @@ export class PrestitoComponent {
   archivio: Archivio;
   codice: string = '';
 
-  // Lavorare sui metodi per cui dà l'errore "ERROR
-  // Error: Cannot read properties of undefined (reading 'libero')"
-
   constructor(private servizio: Service) {
     this.archivio = new Archivio(this.servizio);
     if(this.libroInPrestito) {
@@ -33,10 +30,6 @@ export class PrestitoComponent {
   restituisciLibro() {
       this.archivio.restituisci(this.codice);
       this.servizio.set(JSON.stringify(this.archivio.lista)).subscribe();
-  }
-
-  libero() {
-      return this.archivio.trovaLibro(this.codice).libero();
   }
 
   prendiPersonaInPrestito() {
