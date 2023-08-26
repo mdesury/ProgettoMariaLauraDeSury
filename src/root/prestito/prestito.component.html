@@ -1,8 +1,9 @@
-<!-- Template del componente RimuoviComponent -->
 <div *ngIf="libroInPrestito" style="margin-bottom:5rem; margin-top:2rem;">
   <div *ngIf="personaInPrestito">{{ personaInPrestito }}</div>
   <input type="text" id="personaInPrestito" [(ngModel)]="personaInPrestito" />
+
   <button (click)="prendiInPrestito()">Prendi in prestito</button>
+  <button (click)="restituisciLibro()">Restituisci libro</button> <!-- Aggiunto pulsante restituisci -->
 
   <p *ngIf="errore">{{ errore }}</p>
 </div>

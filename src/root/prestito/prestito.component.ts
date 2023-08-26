@@ -41,11 +41,20 @@ export class PrestitoComponent {
   }
 
   restituisciLibro() {
-    this.archivio.restituisci(this.codice);
-    this.servizio.set(JSON.stringify(this.archivio.lista)).subscribe();
-  }
+    if (this.personaInPrestito != '' && this.libroInPrestito) {
+      this.codice = this.archivio.trovaLibro(this.libroInPrestito.codice).codice;
+  
+      if (!this.archivio.trovaLibro(this.libroInPrestito.codice).libero()) {
+        console.log(this.archivio.trovaLibro(this.libroInPrestito.codice));
+        console.log(
+          this.archivio.trovaLibro(this.libroInPrestito.codice).libero()
+        );
+        this.archivio.restituisci(this.codice);
+        this.servizio.set(JSON.stringify(this.archivio.lista)).subscribe();
+        console.log('Libro restituito');
 
-  prendiPersonaInPrestito() {
-    return this.archivio.trovaLibro(this.codice).personaInPrestito;
+  
+}
+    }
   }
 }
