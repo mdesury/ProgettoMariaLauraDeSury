@@ -14,7 +14,7 @@ export class Archivio {
     this.servizio.get().subscribe((risultato) => {
       let elenco = JSON.parse(risultato);
       elenco.map((libro: any) => {
-        this.aggiungiLibro(libro.titolo, libro.autore, libro.codice);
+        this.aggiungiLibro(libro.titolo, libro.autore, libro.codice, libro.personaInPrestito);
       });
     });
   }
@@ -42,11 +42,12 @@ export class Archivio {
     })[0];
   }
 
-  aggiungiLibro(titolo: string, autore: string, codice: string) {
+  aggiungiLibro(titolo: string, autore: string, codice: string, personaInPrestito?: string) {
     if (!this.trovaLibro(codice)) {
-      this.lista.push(new Libro(titolo, autore, codice));
+      this.lista.push(new Libro(titolo, autore, codice, personaInPrestito));
     }
   }
+
 
   rimuoviLibro(codice: string) {
     this.lista = this.lista.filter((libro) => {

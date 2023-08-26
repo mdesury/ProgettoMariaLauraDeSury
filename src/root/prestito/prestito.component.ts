@@ -11,29 +11,33 @@ import { Archivio } from './../Objects/Archivio';
 export class PrestitoComponent {
   @Input() libroInPrestito: Libro | undefined;
   personaInPrestito: string = '';
-  archivio: Archivio;
+  archivio = new Archivio(this.servizio);
   codice: string = '';
   errore: string = '';
 
-  constructor(private servizio: Service) {
-    this.archivio = new Archivio(this.servizio);
-
-    if (this.libroInPrestito) {
-      this.codice = this.archivio.trovaLibro(
-        this.libroInPrestito.codice
-      ).codice;
-      this.personaInPrestito = this.archivio.trovaLibro(
-        this.libroInPrestito.codice
-      ).personaInPrestito;
-    }
-  }
+  constructor(private servizio: Service) {}
 
   prendiInPrestito() {
-    if (!this.personaInPrestito) {
+    if (this.personaInPrestito != '' && this.libroInPrestito) {
+      this.codice = this.archivio.trovaLibro(this.libroInPrestito.codice).codice;
+
+      if (this.archivio.trovaLibro(this.libroInPrestito.codice).libero()) {
+        console.log(this.archivio.trovaLibro(this.libroInPrestito.codice));
+        console.log(
+          this.archivio.trovaLibro(this.libroInPrestito.codice).libero()
+        );
+        this.archivio.prendiInPrestito(this.codice, this.personaInPrestito);
+        this.servizio.set(JSON.stringify(this.archivio.lista)).subscribe();
+        console.log('Libro in prestito');
+
+      } else {
+        console.log('Libro già in prestito');
+      }
+
+    } else {
       this.errore = 'Devi compilare tutti i campi.';
+      console.log('Errore: libro inesistente. ' + this.libroInPrestito);
     }
-    this.archivio.prendiInPrestito(this.codice, this.personaInPrestito);
-    this.servizio.set(JSON.stringify(this.archivio.lista)).subscribe();
   }
 
   restituisciLibro() {
