@@ -19,44 +19,37 @@ export class PrestitoComponent {
 
   constructor(private servizio: Service) {}
 
-  prendiInPrestito() {
+  async prendiInPrestito() {
     if (this.libroInPrestito) {
-      this.codice = this.archivio.trovaLibro(this.libroInPrestito.codice).codice;
+      try {
+        this.codice = (await this.archivio.trovaLibro(this.libroInPrestito.codice)).codice;
 
-      if (this.archivio.trovaLibro(this.libroInPrestito.codice).libero()) {
-        console.log(this.archivio.trovaLibro(this.libroInPrestito.codice));
-        console.log(
-          this.archivio.trovaLibro(this.libroInPrestito.codice).libero()
-        );
-        this.archivio.prendiInPrestito(this.codice, this.personaInPrestito);
-        this.servizio.set(JSON.stringify(this.archivio.lista)).subscribe();
-        console.log('Libro in prestito');
-
-      } else {
-        console.log('Libro già in prestito');
+        if (await this.archivio.trovaLibro(this.libroInPrestito.codice).libero()) {
+          this.archivio.prendiInPrestito(this.codice, this.personaInPrestito);
+          await this.servizio.set(JSON.stringify(this.archivio.lista)).toPromise();
+        } else {
+          // Libro già in prestito
+        }
+      } catch (error) {
+        console.error('Errore durante il prestito:', error);
       }
-
     } else {
-      this.errore = 'Devi compilare tutti i campi.';
-      console.log('Errore: libro inesistente. ' + this.libroInPrestito);
+      // Gestione dell'errore
     }
   }
 
-  restituisciLibro() {
+  async restituisciLibro() {
     if (this.libroInPrestito) {
-      this.codice = this.archivio.trovaLibro(this.libroInPrestito.codice).codice;
-  
-      if (!this.archivio.trovaLibro(this.libroInPrestito.codice).libero()) {
-        console.log(this.archivio.trovaLibro(this.libroInPrestito.codice));
-        console.log(
-          this.archivio.trovaLibro(this.libroInPrestito.codice).libero()
-        );
-        this.archivio.restituisci(this.codice);
-        this.servizio.set(JSON.stringify(this.archivio.lista)).subscribe();
-        console.log('Libro restituito');
+      try {
+        this.codice = (await this.archivio.trovaLibro(this.libroInPrestito.codice)).codice;
 
-  
-}
+        if (!(await this.archivio.trovaLibro(this.libroInPrestito.codice).libero())) {
+          this.archivio.restituisci(this.codice);
+          await this.servizio.set(JSON.stringify(this.archivio.lista)).toPromise();
+        }
+      } catch (error) {
+        console.error('Errore durante la restituzione:', error);
+      }
     }
   }
 }

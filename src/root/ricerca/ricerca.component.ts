@@ -1,4 +1,3 @@
-
 import { Component } from '@angular/core';
 import { Archivio } from './../Objects/Archivio';
 import { Service } from "./../service.service";
@@ -13,7 +12,7 @@ export class RicercaComponent {
   archivio: Archivio;
   risultatiRicerca: Array<any> = [];
   ricerca: string = '';
-  mostraPulsantePrestito: boolean = false; // Aggiungi questa variabile
+  mostraPulsantePrestito: boolean = false;
   libroTarget: Libro = new Libro('', '', '');
   libroTargetLibero: boolean = false;
 
@@ -21,20 +20,27 @@ export class RicercaComponent {
     this.archivio = new Archivio(this.servizio);
   }
 
-  ricercaLibro() {
+  async ricercaLibro() {
     let chiave = this.ricerca.trim();
 
-    if (chiave === '') { 
+    if (chiave === '') {
       this.risultatiRicerca = [];
-      this.mostraPulsantePrestito = false; // Resetta la variabile quando non ci sono risultati
-    } else {
-      this.risultatiRicerca = this.archivio.ricercaLibro(chiave);
-      this.mostraPulsantePrestito = this.risultatiRicerca.length === 1; // Imposta a true quando c'è un solo risultato
-      if(this.risultatiRicerca.length === 1) {
+      this.mostraPulsantePrestito = false;
+      return; // Aggiungi un return per uscire dalla funzione quando non c'è alcuna chiave di ricerca
+    }
+
+    try {
+      this.risultatiRicerca = await this.archivio.ricercaLibro(chiave);
+      this.mostraPulsantePrestito = this.risultatiRicerca.length === 1;
+
+      if (this.risultatiRicerca.length === 1) {
         this.mostraPulsantePrestito = true;
         this.libroTarget = this.risultatiRicerca[0];
         this.libroTargetLibero = this.libroTarget.libero();
       }
+    } catch (error) {
+      console.error('Errore durante la ricerca:', error);
+      // Puoi gestire l'errore qui, ad esempio, mostrando un messaggio all'utente
     }
   }
 }
