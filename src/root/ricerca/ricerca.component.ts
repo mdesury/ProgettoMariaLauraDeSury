@@ -15,6 +15,7 @@ export class RicercaComponent {
   ricerca: string = '';
   mostraPulsantePrestito: boolean = false; // Aggiungi questa variabile
   libroTarget: Libro = new Libro('', '', '');
+  libroTargetLibero: boolean = false;
 
   constructor(private servizio: Service) {
     this.archivio = new Archivio(this.servizio);
@@ -32,6 +33,7 @@ export class RicercaComponent {
       if(this.risultatiRicerca.length === 1) {
         this.mostraPulsantePrestito = true;
         this.libroTarget = this.risultatiRicerca[0];
+        this.libroTargetLibero = this.libroTarget.libero();
       }
     }
   }

@@ -1,12 +1,12 @@
 <div *ngIf="libroInPrestito" style="margin-bottom:5rem; margin-top:2rem;">
   <div *ngIf="personaInPrestito">{{ personaInPrestito }}</div>
 
-  <ng-container *ngIf="!isLibroInPrestito"> 
+  <ng-container *ngIf="libroTargetLibero"> 
     <input type="text" id="personaInPrestito" [(ngModel)]="personaInPrestito" />
     <button (click)="prendiInPrestito()">Prendi in prestito</button>
   </ng-container>
 
-  <ng-container *ngIf="isLibroInPrestito"> 
+  <ng-container *ngIf="!libroTargetLibero"> 
     <button (click)="restituisciLibro()">Restituisci libro</button>
   </ng-container>
 

@@ -10,17 +10,17 @@ import { Archivio } from './../Objects/Archivio';
 })
 export class PrestitoComponent {
   @Input() libroInPrestito: Libro | undefined;
+  @Input() libroTargetLibero: boolean = false;
   personaInPrestito: string = '';
   archivio = new Archivio(this.servizio);
   codice: string = '';
   errore: string = '';
-  isLibroInPrestito: boolean = false;
 
 
   constructor(private servizio: Service) {}
 
   prendiInPrestito() {
-    if (this.personaInPrestito != '' && this.libroInPrestito) {
+    if (this.libroInPrestito) {
       this.codice = this.archivio.trovaLibro(this.libroInPrestito.codice).codice;
 
       if (this.archivio.trovaLibro(this.libroInPrestito.codice).libero()) {
@@ -30,7 +30,6 @@ export class PrestitoComponent {
         );
         this.archivio.prendiInPrestito(this.codice, this.personaInPrestito);
         this.servizio.set(JSON.stringify(this.archivio.lista)).subscribe();
-        this.isLibroInPrestito = true;
         console.log('Libro in prestito');
 
       } else {
@@ -44,7 +43,7 @@ export class PrestitoComponent {
   }
 
   restituisciLibro() {
-    if (this.personaInPrestito != '' && this.libroInPrestito) {
+    if (this.libroInPrestito) {
       this.codice = this.archivio.trovaLibro(this.libroInPrestito.codice).codice;
   
       if (!this.archivio.trovaLibro(this.libroInPrestito.codice).libero()) {
@@ -54,7 +53,6 @@ export class PrestitoComponent {
         );
         this.archivio.restituisci(this.codice);
         this.servizio.set(JSON.stringify(this.archivio.lista)).subscribe();
-        this.isLibroInPrestito = false;
         console.log('Libro restituito');
 
   

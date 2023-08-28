@@ -15,7 +15,7 @@
   </div> 
 
   <app-rimuovi [libro]="libroTarget"></app-rimuovi>
-  <app-prestito [libroInPrestito]="libroTarget"></app-prestito>
+  <app-prestito [libroInPrestito]="libroTarget" [libroTargetLibero]="libroTargetLibero"></app-prestito>
 </div>
 
 <div *ngIf="risultatiRicerca.length > 1">
