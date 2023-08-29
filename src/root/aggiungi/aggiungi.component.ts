@@ -14,7 +14,13 @@ export class AggiungiComponent implements OnInit {
   archivio = new Archivio(this.servizio);
   lista = this.archivio.lista;
   errore: string = '';
+  messaggioAggiunta: string = '';
+  mostraAggiungi: boolean = false;
 
+
+  bottoneAggiungi() {
+    this.mostraAggiungi = true;
+  }
   aggiungiLibro() {
     if (!this.titolo || !this.autore || !this.codice) {
       this.errore = 'Devi compilare tutti i campi.';
@@ -23,6 +29,9 @@ export class AggiungiComponent implements OnInit {
       
       this.archivio.aggiungiLibro(this.titolo, this.autore, this.codice);
       this.servizio.set(JSON.stringify(this.archivio.lista)).subscribe();
+
+      this.messaggioAggiunta = 'Libro aggiunto alla libreria.';
+      this.mostraAggiungi = false; 
     }
   }
 
@@ -32,3 +41,4 @@ export class AggiungiComponent implements OnInit {
    
   }
 }
+

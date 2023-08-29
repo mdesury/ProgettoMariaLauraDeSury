@@ -1,6 +1,7 @@
 <!-- Template del componente RicercaComponent -->
+<p>Ricerca un libro </p>
 <form class="modulo-ricerca">
-  <input id="trovaLibro" type="text" placeholder="Cerca per..." required [(ngModel)]="ricerca" name="ricercaInput" (input)="ricercaLibro()">
+  <input id="trovaLibro" type="text" placeholder="ricerca libri..." required [(ngModel)]="ricerca" name="ricercaInput" (input)="ricercaLibro()">
 </form>
 
 <div *ngIf="risultatiRicerca.length === 0 && ricerca !== ''">

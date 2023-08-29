@@ -1,0 +1,40 @@
+.modulo-ricerca {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 0px;
+}
+
+p {
+  margin-top: 10px;
+  color: red;
+  text-align: center;
+}
+
+#trovaLibro {
+  width: 40%;
+  padding: 3px;
+  margin-top:-10px;
+}
+
+.risultati {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.risultati p {
+  text-align: center;
+}
+
+.bottni-azioni {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.bottni-azioni button {
+  margin: 0 5px;
+}
