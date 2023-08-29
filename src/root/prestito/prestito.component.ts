@@ -12,7 +12,7 @@ export class PrestitoComponent {
   @Input() libroInPrestito: Libro | undefined;
   @Input() libroTargetLibero: boolean = false;
   personaInPrestito: string = '';
-  archivio = new Archivio(this.servizio);
+  @Input() archivio = new Archivio(this.servizio);
   codice: string = '';
   errore: string = '';
 

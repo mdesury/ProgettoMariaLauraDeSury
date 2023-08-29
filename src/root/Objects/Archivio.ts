@@ -10,14 +10,17 @@ export class Archivio {
     this.lista = new Array<Libro>();
     this.servizio = servizio;
     this.libriPrestati = [];
-
-    this.servizio.get().subscribe((risultato) => {
-      let elenco = JSON.parse(risultato);
-      elenco.map((libro: any) => {
-        this.aggiungiLibro(libro.titolo, libro.autore, libro.codice, libro.personaInPrestito);
+    this.aggiornaLista();
+    }
+  
+    aggiornaLista(){
+      this.servizio.get().subscribe((risultato) => {
+        let elenco = JSON.parse(risultato);
+        elenco.map((libro: any) => {
+          this.aggiungiLibro(libro.titolo, libro.autore, libro.codice, libro.personaInPrestito);
+        });
       });
-    });
-  }
+    }
 
   ricercaLibro(chiave: string) {
     return this.lista.filter((libro) => {
@@ -34,7 +37,6 @@ export class Archivio {
       );
     }));
   }
-  
 
   trovaLibro(codice: string) {
     return this.lista.filter((libro) => {

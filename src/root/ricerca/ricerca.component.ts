@@ -1,5 +1,4 @@
-
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Archivio } from './../Objects/Archivio';
 import { Service } from "./../service.service";
 import { Libro } from './../Objects/Libro'; 
@@ -10,15 +9,14 @@ import { Libro } from './../Objects/Libro';
   styleUrls: ['./ricerca.component.css']
 })
 export class RicercaComponent {
-  archivio: Archivio;
+  @Input() archivio = new Archivio(this.servizio);
   risultatiRicerca: Array<any> = [];
   ricerca: string = '';
-  mostraPulsantePrestito: boolean = false; // Aggiungi questa variabile
+  mostraPulsantePrestito: boolean = false; 
   libroTarget: Libro = new Libro('', '', '');
   libroTargetLibero: boolean = false;
 
   constructor(private servizio: Service) {
-    this.archivio = new Archivio(this.servizio);
   }
 
   ricercaLibro() {
@@ -26,10 +24,10 @@ export class RicercaComponent {
 
     if (chiave === '') { 
       this.risultatiRicerca = [];
-      this.mostraPulsantePrestito = false; // Resetta la variabile quando non ci sono risultati
+      this.mostraPulsantePrestito = false; 
     } else {
       this.risultatiRicerca = this.archivio.ricercaLibro(chiave);
-      this.mostraPulsantePrestito = this.risultatiRicerca.length === 1; // Imposta a true quando c'è un solo risultato
+      this.mostraPulsantePrestito = this.risultatiRicerca.length === 1; 
       if(this.risultatiRicerca.length === 1) {
         this.mostraPulsantePrestito = true;
         this.libroTarget = this.risultatiRicerca[0];

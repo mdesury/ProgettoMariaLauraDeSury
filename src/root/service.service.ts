@@ -22,5 +22,4 @@ export class Service {
   public set(newData: string): Observable<string> {
     return this.http.post<string>(this.URL + "set?key=" + this.apiKey, newData);
   }
-
 }

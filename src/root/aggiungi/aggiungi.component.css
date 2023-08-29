@@ -3,23 +3,24 @@
   justify-content: center;
   align-items: center;
   margin-top: 0px;
+  text-align: center;
 }
 
 #autore {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 10px;
+  margin-top: 5px;
+  text-align: center;
 }
 
 #codice {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 13px;
+  margin-top: 5px;
+  text-align: center;
 }
-
-
 
 #codice {
   margin-bottom: 0;

@@ -1,12 +1,12 @@
 <div *ngIf="!mostraAggiungi">
-  <button (click)="bottoneAggiungi()"> + nuovo libro</button>
+  <button (click)="bottoneAggiungi()"> nuovo libro</button>
 </div>
 
 <div *ngIf="mostraAggiungi">
   <p> aggiungi un nuovo libro</p>
-  <input id="titolo" [(ngModel)]="titolo" placeholder="Titolo">
-  <input id="autore" [(ngModel)]="autore" placeholder="Autore">
-  <input id="codice" [(ngModel)]="codice" placeholder="Codice">
+  <input id="titolo" [(ngModel)]="titolo" placeholder="inserisci titolo">
+  <input id="autore" [(ngModel)]="autore" placeholder="inserisci autore">
+  <input id="codice" [(ngModel)]="codice" placeholder="inserisci codice">
   <button (click)="aggiungiLibro()">Aggiungi Libro</button>
   <p id="aggiunta">{{ messaggioAggiunta }}</p>
   <p *ngIf="errore">{{ errore }}</p>

@@ -9,8 +9,8 @@ import { Service } from "./../service.service";
   styleUrls: ['./rimuovi.component.css']
 })
 export class RimuoviComponent implements OnInit {
-  archivio = new Archivio(this.servizio);
-  @Input() libro: Libro | undefined; // Riceve l'oggetto Libro o undefined
+  @Input() archivio = new Archivio(this.servizio);
+  @Input() libro: Libro | undefined; 
   risultatiRicerca: any[] = [];
 
   rimuoviLibro(libro: Libro) {
