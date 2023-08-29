@@ -1,14 +1,14 @@
-<div *ngIf="libroInPrestito" style="margin-bottom:5rem; margin-top:2rem;">
-  <div *ngIf="personaInPrestito">{{ personaInPrestito }}</div>
+<div *ngIf="libroInPrestito" class="prestito-container">
+  <div *ngIf="personaInPrestito" class="persona-info">{{ personaInPrestito }}</div>
 
-  <ng-container *ngIf="libroTargetLibero"> 
+  <div *ngIf="libroTargetLibero" class="input-container">
     <input type="text" id="personaInPrestito" [(ngModel)]="personaInPrestito" />
     <button (click)="prendiInPrestito()">Prendi in prestito</button>
-  </ng-container>
+  </div>
 
-  <ng-container *ngIf="!libroTargetLibero"> 
+  <div *ngIf="!libroTargetLibero" class="button-container">
     <button (click)="restituisciLibro()">Restituisci libro</button>
-  </ng-container>
+  </div>
 
-  <p *ngIf="errore">{{ errore }}</p>
+  <p *ngIf="errore" class="error-message">{{ errore }}</p>
 </div>

@@ -16,41 +16,26 @@ export class PrestitoComponent {
   codice: string = '';
   errore: string = '';
 
-
   constructor(private servizio: Service) {}
 
-  
-
-  async prendiInPrestito() {
+  prendiInPrestito() {
     if (this.libroInPrestito) {
-      try {
-        this.codice = (await this.archivio.trovaLibro(this.libroInPrestito.codice)).codice;
+      this.codice = this.archivio.trovaLibro(this.libroInPrestito.codice).codice;
 
-        if (await this.archivio.trovaLibro(this.libroInPrestito.codice).libero()) {
-          this.archivio.prendiInPrestito(this.codice, this.personaInPrestito);
-          await this.servizio.set(JSON.stringify(this.archivio.lista)).toPromise();
-        } else {
-          // Libro già in prestito
-        }
-      } catch (error) {
-        console.error('Errore durante il prestito:', error);
+      if (this.archivio.trovaLibro(this.libroInPrestito.codice).libero()) {
+        this.archivio.prendiInPrestito(this.codice, this.personaInPrestito);
+        this.servizio.set(JSON.stringify(this.archivio.lista)).subscribe();
       }
-    } else {
-      // Gestione dell'errore
     }
   }
 
-  async restituisciLibro() {
+  restituisciLibro() {
     if (this.libroInPrestito) {
-      try {
-        this.codice = (await this.archivio.trovaLibro(this.libroInPrestito.codice)).codice;
+      this.codice = this.archivio.trovaLibro(this.libroInPrestito.codice).codice;
 
-        if (!(await this.archivio.trovaLibro(this.libroInPrestito.codice).libero())) {
-          this.archivio.restituisci(this.codice);
-          await this.servizio.set(JSON.stringify(this.archivio.lista)).toPromise();
-        }
-      } catch (error) {
-        console.error('Errore durante la restituzione:', error);
+      if (!this.archivio.trovaLibro(this.libroInPrestito.codice).libero()) {
+        this.archivio.restituisci(this.codice);
+        this.servizio.set(JSON.stringify(this.archivio.lista)).subscribe();
       }
     }
   }

@@ -1,0 +1,17 @@
+.prestito-container {
+  margin-bottom: 5rem;
+  margin-top: 2rem;
+}
+
+.persona-info {
+  margin-bottom: 1rem; /* Aggiungi uno spazio tra le informazioni della persona e l'input */
+}
+
+.input-container,
+.button-container {
+  margin-top: 1rem; /* Aggiungi uno spazio sopra l'input o il pulsante */
+}
+
+.error-message {
+  margin-top: 1rem; /* Aggiungi uno spazio sopra il messaggio di errore */
+}

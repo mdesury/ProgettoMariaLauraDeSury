@@ -55,7 +55,7 @@ export class Archivio {
     });
   }
 
-  getLibri() {
+  prendiLibri() {
     return this.lista;
   }
 
