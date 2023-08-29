@@ -1,5 +1,5 @@
 import { Libro } from "./Libro";
-import { Service } from "./../service.service";
+import { Service } from "../service.service";
 
 export class Archivio {
   lista: Array<Libro>;
@@ -10,19 +10,17 @@ export class Archivio {
     this.lista = new Array<Libro>();
     this.servizio = servizio;
     this.libriPrestati = [];
-    this.aggiornaLista();
-    }
-  
-    aggiornaLista(){
-      this.servizio.get().subscribe((risultato) => {
-        let elenco = JSON.parse(risultato);
-        elenco.map((libro: any) => {
-          this.aggiungiLibro(libro.titolo, libro.autore, libro.codice, libro.personaInPrestito);
-        });
+
+    this.servizio.get().subscribe((risultato) => {
+      let elenco = JSON.parse(risultato);
+      elenco.map((libro: any) => {
+        this.aggiungiLibro(libro.titolo, libro.autore, libro.codice, libro.personaInPrestito);
       });
-    }
+    });
+  }
 
   ricercaLibro(chiave: string) {
+    // console.log(this.lista);
     return this.lista.filter((libro) => {
       return (
         libro.titolo.toLowerCase().includes(chiave.toLowerCase()) ||
@@ -39,6 +37,7 @@ export class Archivio {
   }
 
   trovaLibro(codice: string) {
+    // console.log(this.lista);
     return this.lista.filter((libro) => {
       return libro.codice === codice;
     })[0];
@@ -48,8 +47,8 @@ export class Archivio {
     if (!this.trovaLibro(codice)) {
       this.lista.push(new Libro(titolo, autore, codice, personaInPrestito));
     }
+    console.log(this.lista);
   }
-
 
   rimuoviLibro(codice: string) {
     this.lista = this.lista.filter((libro) => {
@@ -75,7 +74,7 @@ export class Archivio {
     }
 
   }
-  }
-  
+}
+
 
 

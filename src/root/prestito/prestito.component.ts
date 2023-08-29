@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import { Service } from './../service.service';
 import { Libro } from './../Objects/Libro';
 import { Archivio } from './../Objects/Archivio';
@@ -8,7 +8,7 @@ import { Archivio } from './../Objects/Archivio';
   templateUrl: './prestito.component.html',
   styleUrls: ['./prestito.component.css'],
 })
-export class PrestitoComponent {
+export class PrestitoComponent  implements OnInit{
   @Input() libroInPrestito: Libro | undefined;
   @Input() libroTargetLibero: boolean = false;
   personaInPrestito: string = '';
@@ -37,6 +37,12 @@ export class PrestitoComponent {
         this.archivio.restituisci(this.codice);
         this.servizio.set(JSON.stringify(this.archivio.lista)).subscribe();
       }
+    }
+  }
+
+  ngOnInit(): void {
+    if (this.libroInPrestito){
+      this.personaInPrestito = this.libroInPrestito.personaInPrestito;
     }
   }
 }

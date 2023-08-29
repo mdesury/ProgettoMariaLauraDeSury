@@ -13,11 +13,24 @@
     <p>Titolo: {{ libroTarget.titolo }}</p>
     <p>Autore: {{ libroTarget.autore }}</p>
     <p>Codice: {{ libroTarget.codice }}</p>
-  </div> 
+  </div>
 
-  <app-rimuovi [libro]="libroTarget"></app-rimuovi>
-  <app-prestito [libroInPrestito]="libroTarget" [libroTargetLibero]="libroTargetLibero"></app-prestito>
+<!--  <app-prestito [libroInPrestito]="libroTarget" [libroTargetLibero]="libroTargetLibero"></app-prestito>-->
+  <div *ngIf="libero">
+    <div>
+      <app-rimuovi [libro]="libroTarget" (changeArchivio)="ricercaLibro($event)"></app-rimuovi>
+      <app-preso-prestito [libro]="libroTarget" [archivio]="archivio" (getChangeStatus)="libero=$event">
+      </app-preso-prestito>
+    </div>
+  </div>
+  <div *ngIf="!libero">
+    <div>
+      <app-libero [libro]="libroTarget" [archivio]="archivio" (getChangeStatus)="libero=$event"></app-libero>
+    </div>
+  </div>
 </div>
+
+
 
 <div *ngIf="risultatiRicerca.length > 1">
   <p>Numero di corrispondenze: {{ risultatiRicerca.length }}</p>

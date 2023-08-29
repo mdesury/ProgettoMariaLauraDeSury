@@ -7,6 +7,8 @@ import { RicercaComponent } from './ricerca/ricerca.component';
 import { AggiungiComponent } from './aggiungi/aggiungi.component';
 import {RimuoviComponent } from './rimuovi/rimuovi.component';
 import {PrestitoComponent } from './prestito/prestito.component';
+import {RestituisciComponent } from './restituisci/restituisci.component';
+import {PresoPrestitoComponent } from './preso-prestito/preso-prestito.component';
 import { RootComponent } from './root.component';
 
 @NgModule({
@@ -15,7 +17,9 @@ import { RootComponent } from './root.component';
     RicercaComponent,
     AggiungiComponent,
     RimuoviComponent,
-    PrestitoComponent
+    PrestitoComponent,
+    RestituisciComponent,
+    PresoPrestitoComponent
   ],
   imports: [
     CommonModule,
