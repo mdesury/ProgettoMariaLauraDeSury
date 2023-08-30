@@ -74,6 +74,15 @@ export class Archivio {
     }
 
   }
+
+  aggiornaLista(){
+    this.servizio.get().subscribe((risultato) => {
+      let elenco = JSON.parse(risultato);
+      elenco.map((libro: any) => {
+        this.aggiungiLibro(libro.titolo, libro.autore, libro.codice, libro.personaInPrestito);
+      });
+    });
+  }
 }
 
 

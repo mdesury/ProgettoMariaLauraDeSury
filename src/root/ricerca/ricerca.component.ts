@@ -27,6 +27,7 @@ export class RicercaComponent implements OnChanges{
       this.archivio = archivio;
     }
 
+    this.archivio.aggiornaLista();
     let chiave = this.ricerca.trim();
 
     if (chiave === '') {
