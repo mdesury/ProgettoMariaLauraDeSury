@@ -61,7 +61,7 @@ export class Archivio {
   }
 
   prendiInPrestito(codice: string, persona: string) {
-    let libro = this.trovaLibro(codice);
+    let libro = this.trovaLibro(codice); 
     if (libro.libero()) {
       libro.prendiInPrestito(persona);
     }
