@@ -18,7 +18,6 @@ export class Libro {
   }
 
   libero() {
-    // console.log(this)
     return this.personaInPrestito === '';
   }
 

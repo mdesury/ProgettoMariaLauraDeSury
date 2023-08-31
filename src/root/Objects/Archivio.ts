@@ -20,7 +20,6 @@ export class Archivio {
   }
 
   ricercaLibro(chiave: string) {
-    // console.log(this.lista);
     return this.lista.filter((libro) => {
       return (
         libro.titolo.toLowerCase().includes(chiave.toLowerCase()) ||
@@ -37,7 +36,6 @@ export class Archivio {
   }
 
   trovaLibro(codice: string) {
-    // console.log(this.lista);
     return this.lista.filter((libro) => {
       return libro.codice === codice;
     })[0];
@@ -75,7 +73,7 @@ export class Archivio {
 
   }
 
-  aggiornaLista(){
+  aggiornaLista() {
     this.servizio.get().subscribe((risultato) => {
       let elenco = JSON.parse(risultato);
       elenco.map((libro: any) => {

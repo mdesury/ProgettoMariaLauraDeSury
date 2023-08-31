@@ -1,0 +1,8 @@
+/* Stile per centrare il contenitore */
+.bottone {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+

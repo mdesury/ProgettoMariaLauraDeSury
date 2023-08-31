@@ -1,17 +1,26 @@
 .prestito-container {
-  margin-bottom: 5rem;
-  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  /* Altre proprietà di stile desiderate */
 }
 
-.persona-info {
-  margin-bottom: 1rem; /* Aggiungi uno spazio tra le informazioni della persona e l'input */
+.center-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem; /* Aggiungi margine inferiore per separare dalla sezione Restituisci libro */
 }
 
-.input-container,
 .button-container {
-  margin-top: 1rem; /* Aggiungi uno spazio sopra l'input o il pulsante */
+  margin-top: 80rem; /* Aggiungi margine superiore per separare dalla sezione Prendi in prestito */
 }
 
 .error-message {
-  margin-top: 1rem; /* Aggiungi uno spazio sopra il messaggio di errore */
+  color: red;
+  margin-top: 1rem;
+  /* Altre proprietà di stile desiderate */
 }

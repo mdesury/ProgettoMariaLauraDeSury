@@ -2,7 +2,7 @@
 
   <div *ngIf="personaInPrestito" class="persona-info">{{ personaInPrestito }}</div>
 
-  <div *ngIf="libroTargetLibero" class="input-container">
+  <div class="center-content">
     <input type="text" id="personaInPrestito" [(ngModel)]="personaInPrestito" />
     <button (click)="prendiInPrestito()">Prendi in prestito</button>
   </div>
