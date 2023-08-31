@@ -1,5 +1,5 @@
 <div *ngIf="!mostraAggiungi">
-  <button (click)="bottoneAggiungi()"> aggiungi un nuovo libro</button>
+  <button (click)="bottoneAggiungi()"> + aggiungi nuovo libro</button>
 </div>
 
 <div *ngIf="mostraAggiungi">
@@ -11,3 +11,4 @@
   <p id="aggiunta">{{ messaggioAggiunta }}</p>
   <p *ngIf="errore">{{ errore }}</p>
 </div>
+

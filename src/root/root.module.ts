@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
+import { Service } from "./service.service";
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
@@ -26,6 +27,9 @@ import { RootComponent } from './root.component';
     BrowserModule,
     FormsModule,
     HttpClientModule
+  ],
+  providers:[
+    Service,
   ],
   bootstrap: [RootComponent]
 })
