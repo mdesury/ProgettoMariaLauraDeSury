@@ -25,7 +25,7 @@ export class AggiungiComponent implements OnInit {
       this.errore = 'Devi compilare tutti i campi.';
     } else {
       this.errore = '';
-
+      this.archivio.aggiornaLista();
       this.archivio.aggiungiLibro(this.titolo, this.autore, this.codice);
       this.servizio.set(JSON.stringify(this.archivio.lista)).subscribe();
 
