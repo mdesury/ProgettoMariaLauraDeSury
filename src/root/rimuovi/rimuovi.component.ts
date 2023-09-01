@@ -1,13 +1,13 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Archivio } from '../Objects/Archivio';
 import { Libro } from '../Objects/Libro';
 // @ts-ignore
-import { Service } from "../service.service";
+import { Service } from '../service.service';
 
 @Component({
   selector: 'app-rimuovi',
   templateUrl: './rimuovi.component.html',
-  styleUrls: ['./rimuovi.component.css']
+  styleUrls: ['./rimuovi.component.css'],
 })
 export class RimuoviComponent implements OnInit {
   @Input() archivio = new Archivio(this.servizio);
@@ -18,12 +18,10 @@ export class RimuoviComponent implements OnInit {
   rimuoviLibro(libro: Libro) {
     this.archivio.rimuoviLibro(libro.codice);
     this.servizio.set(JSON.stringify(this.archivio.lista)).subscribe();
-    this.changeArchivio.emit(this.archivio);
+    this.changeArchivio.emit();
   }
 
-  constructor(private servizio: Service) { }
+  constructor(private servizio: Service) {}
 
-  ngOnInit() {
-
-  }
+  ngOnInit() {}
 }

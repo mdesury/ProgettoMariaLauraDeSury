@@ -1,7 +1,15 @@
 <!-- Template del componente RicercaComponent -->
-<p>Ricerca dalla libreria </p>
+<p>Ricerca dalla libreria</p>
 <form class="modulo-ricerca">
-  <input id="trovaLibro" type="text" placeholder="ricerca libri..." required [(ngModel)]="ricerca" name="ricercaInput" (input)="ricercaLibro()">
+  <input
+    id="trovaLibro"
+    type="text"
+    placeholder="ricerca libri..."
+    required
+    [(ngModel)]="ricerca"
+    name="ricercaInput"
+    (input)="ricercaLibro()"
+  />
 </form>
 
 <div *ngIf="risultatiRicerca.length === 0 && ricerca !== ''">
@@ -15,22 +23,32 @@
     <p>Codice: {{ libroTarget.codice }}</p>
   </div>
 
-<!--  <app-prestito [libroInPrestito]="libroTarget" [libroTargetLibero]="libroTargetLibero"></app-prestito>-->
+  <!--  <app-prestito [libroInPrestito]="libroTarget" [libroTargetLibero]="libroTargetLibero"></app-prestito>-->
   <div *ngIf="libero">
     <div>
-      <app-rimuovi [libro]="libroTarget" (changeArchivio)="ricercaLibro($event)"></app-rimuovi>
-      <app-preso-prestito [libro]="libroTarget" [archivio]="archivio" (getChangeStatus)="libero=$event">
+      <app-rimuovi
+        [libro]="libroTarget"
+        [archivio]="archivio"
+        (changeArchivio)="ricercaLibro()"
+      ></app-rimuovi>
+      <app-preso-prestito
+        [libro]="libroTarget"
+        [archivio]="archivio"
+        (getChangeStatus)="libero = $event"
+      >
       </app-preso-prestito>
     </div>
   </div>
   <div *ngIf="!libero">
     <div>
-      <app-restituisci [libro]="libroTarget" [archivio]="archivio" (getChangeStatus)="libero=$event"></app-restituisci>
+      <app-restituisci
+        [libro]="libroTarget"
+        [archivio]="archivio"
+        (getChangeStatus)="libero = $event"
+      ></app-restituisci>
     </div>
   </div>
 </div>
-
-
 
 <div *ngIf="risultatiRicerca.length > 1">
   <p>Numero di corrispondenze: {{ risultatiRicerca.length }}</p>
