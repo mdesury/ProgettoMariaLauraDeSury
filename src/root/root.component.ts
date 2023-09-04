@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Archivio } from './Objects/Archivio';
+import { Archivio } from './Oggetti/Archivio';
 import {Service} from "./service.service";
 
 @Component({

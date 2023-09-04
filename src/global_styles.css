@@ -1,1 +1,8 @@
-/* Add application styles & imports to this file! */
+.container {
+  width: 80%; 
+  margin: 0 auto; 
+  padding: 20px; 
+  border: 2px solid rgb(0, 0, 0);
+  background-color: #f1eeeec0; 
+  border-radius: 15px;
+}

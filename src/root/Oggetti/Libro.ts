@@ -2,7 +2,7 @@ export class Libro {
   titolo: string;
   autore: string;
   codice: string;
-  personaInPrestito: string;
+  prestito: string;
 
   constructor(titolo: string, autore: string, codice: string, personaInPrestito?: string) {
     this.titolo = titolo;
@@ -10,26 +10,26 @@ export class Libro {
     this.codice = codice;
 
     if(personaInPrestito) {
-      this.personaInPrestito = personaInPrestito;
+      this.prestito = personaInPrestito;
     } else {
-      this.personaInPrestito = '';
+      this.prestito = '';
     }
 
   }
 
   libero() {
-    return this.personaInPrestito === '';
+    return this.prestito === '';
   }
 
   prendiInPrestito(persona: string) {
     if (this.libero()) {
-      this.personaInPrestito = persona;
+      this.prestito = persona;
     }
   }
 
   restituisci() {
     if (!this.libero()) {
-      this.personaInPrestito = '';
+      this.prestito = '';
     }
   }
 }

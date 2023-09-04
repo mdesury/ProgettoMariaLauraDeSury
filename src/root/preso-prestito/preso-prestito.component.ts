@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Archivio } from "../Objects/Archivio";
+import { Archivio } from "../Oggetti/Archivio";
 import { Service } from "../service.service";
-import { Libro } from "../Objects/Libro";
+import { Libro } from "../Oggetti/Libro";
 
 @Component({
   selector: 'app-preso-prestito',

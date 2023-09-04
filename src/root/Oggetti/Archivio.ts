@@ -11,12 +11,22 @@ export class Archivio {
     this.servizio = servizio;
     this.libriPrestati = [];
 
-    this.servizio.get().subscribe((risultato) => {
-      let elenco = JSON.parse(risultato);
-      elenco.map((libro: any) => {
-        this.aggiungiLibro(libro.titolo, libro.autore, libro.codice, libro.personaInPrestito);
-      });
-    });
+    this.servizio.get().subscribe(
+      (risultato) => {
+        try {
+          let elenco = JSON.parse(risultato);
+          elenco.map((libro: any) => {
+            this.aggiungiLibro(libro.titolo, libro.autore, libro.codice, libro.personaInPrestito);
+          });
+        } catch (error) {
+          console.error('Errore durante il parsing del risultato:', error);
+        }
+      },
+      (errore) => {
+        console.error('Errore nella richiesta HTTP:', errore);
+      }
+    );
+    
   }
 
   ricercaLibro(chiave: string) {

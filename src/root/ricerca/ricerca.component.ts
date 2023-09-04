@@ -6,9 +6,9 @@ import {
   SimpleChanges,
   Output,
 } from '@angular/core';
-import { Archivio } from './../Objects/Archivio';
+import { Archivio } from './../Oggetti/Archivio';
 import { Service } from './../service.service';
-import { Libro } from './../Objects/Libro';
+import { Libro } from './../Oggetti/Libro';
 
 @Component({
   selector: 'app-ricerca',
@@ -19,7 +19,7 @@ export class RicercaComponent implements OnChanges {
   risultatiRicerca: Array<any> = [];
   ricerca: string = '';
   mostraPulsantePrestito: boolean = false; // Aggiungi questa variabile
-  libroTarget: Libro = new Libro('', '', '');
+  libroScelto: Libro = new Libro('', '', '');
   libero = false;
   @Input() archivio = new Archivio(this.servizio);
 
@@ -32,20 +32,20 @@ export class RicercaComponent implements OnChanges {
 
     if (chiave === '') {
       this.risultatiRicerca = [];
-      this.mostraPulsantePrestito = false; // Resetta la variabile quando non ci sono risultati
+      this.mostraPulsantePrestito = false; 
     } else {
       this.risultatiRicerca = this.archivio.ricercaLibro(chiave);
-      this.mostraPulsantePrestito = this.risultatiRicerca.length === 1; // Imposta a true quando c'è un solo risultato
+      this.mostraPulsantePrestito = this.risultatiRicerca.length === 1; 
       if (this.risultatiRicerca.length === 1) {
         this.mostraPulsantePrestito = true;
-        this.libroTarget = this.risultatiRicerca[0];
+        this.libroScelto = this.risultatiRicerca[0];
       }
     }
     //console.log(this.risultatiRicerca);
-    this.libero = this.libroTarget.libero();
+    this.libero = this.libroScelto.libero();
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    this.libero = this.libroTarget.libero();
+    this.libero = this.libroScelto.libero();
   }
 }

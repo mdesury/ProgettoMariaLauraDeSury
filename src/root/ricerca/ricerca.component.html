@@ -1,5 +1,4 @@
-<!-- Template del componente RicercaComponent -->
-<p>Ricerca dalla libreria</p>
+<p>Ricerca dall'archivio</p>
 <form class="modulo-ricerca">
   <input
     id="trovaLibro"
@@ -18,21 +17,21 @@
 
 <div *ngIf="risultatiRicerca.length === 1">
   <div>
-    <p>Titolo: {{ libroTarget.titolo }}</p>
-    <p>Autore: {{ libroTarget.autore }}</p>
-    <p>Codice: {{ libroTarget.codice }}</p>
+    <p>Titolo: {{ libroScelto.titolo }}</p>
+    <p>Autore: {{ libroScelto.autore }}</p>
+    <p>Codice: {{ libroScelto.codice }}</p>
   </div>
 
-  <!--  <app-prestito [libroInPrestito]="libroTarget" [libroTargetLibero]="libroTargetLibero"></app-prestito>-->
+
   <div *ngIf="libero">
     <div>
       <app-rimuovi
-        [libro]="libroTarget"
+        [libro]="libroScelto"
         [archivio]="archivio"
         (changeArchivio)="ricercaLibro()"
       ></app-rimuovi>
       <app-preso-prestito
-        [libro]="libroTarget"
+        [libro]="libroScelto"
         [archivio]="archivio"
         (getChangeStatus)="libero = $event"
       >
@@ -42,7 +41,7 @@
   <div *ngIf="!libero">
     <div>
       <app-restituisci
-        [libro]="libroTarget"
+        [libro]="libroScelto"
         [archivio]="archivio"
         (getChangeStatus)="libero = $event"
       ></app-restituisci>

@@ -1,7 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Archivio } from '../Objects/Archivio';
-import { Libro } from '../Objects/Libro';
-// @ts-ignore
+import { Archivio } from '../Oggetti/Archivio';
+import { Libro } from '../Oggetti/Libro';
 import { Service } from '../service.service';
 
 @Component({
@@ -11,7 +10,7 @@ import { Service } from '../service.service';
 })
 export class RimuoviComponent implements OnInit {
   @Input() archivio = new Archivio(this.servizio);
-  @Input() libro: Libro | undefined; // Riceve l'oggetto Libro o undefined
+  @Input() libro: Libro | undefined; 
   @Output() changeArchivio = new EventEmitter<any>();
   risultatiRicerca: any[] = [];
 

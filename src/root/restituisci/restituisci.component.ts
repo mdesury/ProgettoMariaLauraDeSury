@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {Service} from "../service.service";
-import {Archivio} from "../Objects/Archivio";
-import {Libro} from "../Objects/Libro";
+import {Archivio} from "../Oggetti/Archivio";
+import {Libro} from "../Oggetti/Libro";
 
 @Component({
   selector: 'app-restituisci',

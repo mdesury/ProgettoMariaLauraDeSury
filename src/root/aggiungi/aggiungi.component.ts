@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
-import { Archivio } from './../Objects/Archivio';
+import { Archivio } from './../Oggetti/Archivio';
 import { Service } from './../service.service';
 
 @Component({
@@ -36,6 +36,8 @@ export class AggiungiComponent implements OnInit {
       this.mostraAggiungi = false;
     }
   }
+
+  
 
   constructor(private servizio: Service) {}
 

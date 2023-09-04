@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import { Service } from './../service.service';
-import { Libro } from './../Objects/Libro';
-import { Archivio } from './../Objects/Archivio';
+import { Libro } from './../Oggetti/Libro';
+import { Archivio } from './../Oggetti/Archivio';
 
 @Component({
   selector: 'app-prestito',
@@ -10,7 +10,7 @@ import { Archivio } from './../Objects/Archivio';
 })
 export class PrestitoComponent  implements OnInit{
   @Input() libroInPrestito: Libro | undefined;
-  @Input() libroTargetLibero: boolean = false;
+  @Input() libroSceltoLibero: boolean = false;
   personaInPrestito: string = '';
   @Input() archivio = new Archivio(this.servizio);
   codice: string = '';
@@ -44,7 +44,7 @@ export class PrestitoComponent  implements OnInit{
 
   ngOnInit(): void {
     if (this.libroInPrestito){
-      this.personaInPrestito = this.libroInPrestito.personaInPrestito;
+      this.personaInPrestito = this.libroInPrestito.prestito;
     }
   }
 }
