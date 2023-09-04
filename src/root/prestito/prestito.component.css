@@ -4,7 +4,6 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  /* Altre proprietà di stile desiderate */
 }
 
 .center-content {
@@ -12,15 +11,14 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-bottom: 1rem; /* Aggiungi margine inferiore per separare dalla sezione Restituisci libro */
+  margin-bottom: 1rem; 
 }
 
 .button-container {
-  margin-top: 80rem; /* Aggiungi margine superiore per separare dalla sezione Prendi in prestito */
+  margin-top: 80rem; 
 }
 
 .error-message {
   color: red;
   margin-top: 1rem;
-  /* Altre proprietà di stile desiderate */
 }
