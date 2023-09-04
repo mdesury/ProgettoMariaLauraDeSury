@@ -9,8 +9,8 @@ import { Archivio } from './../Oggetti/Archivio';
   styleUrls: ['./prestito.component.css'],
 })
 export class PrestitoComponent  implements OnInit{
-  @Input() libroInPrestito: Libro | undefined;
-  @Input() libroSceltoLibero: boolean = false;
+  libroInPrestito: Libro | undefined;
+  libroSceltoLibero: boolean = false;
   personaInPrestito: string = '';
   @Input() archivio = new Archivio(this.servizio);
   codice: string = '';

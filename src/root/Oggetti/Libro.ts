@@ -4,13 +4,13 @@ export class Libro {
   codice: string;
   prestito: string;
 
-  constructor(titolo: string, autore: string, codice: string, personaInPrestito?: string) {
+  constructor(titolo: string, autore: string, codice: string, prestito?: string) {
     this.titolo = titolo;
     this.autore = autore;
     this.codice = codice;
 
-    if(personaInPrestito) {
-      this.prestito = personaInPrestito;
+    if(prestito) {
+      this.prestito = prestito;
     } else {
       this.prestito = '';
     }

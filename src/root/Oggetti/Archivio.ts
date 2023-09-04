@@ -16,7 +16,7 @@ export class Archivio {
         try {
           let elenco = JSON.parse(risultato);
           elenco.map((libro: any) => {
-            this.aggiungiLibro(libro.titolo, libro.autore, libro.codice, libro.personaInPrestito);
+            this.aggiungiLibro(libro.titolo, libro.autore, libro.codice, libro.prestito);
           });
         } catch (error) {
           console.error('Errore durante il parsing del risultato:', error);
@@ -51,9 +51,9 @@ export class Archivio {
     })[0];
   }
 
-  aggiungiLibro(titolo: string, autore: string, codice: string, personaInPrestito?: string) {
+  aggiungiLibro(titolo: string, autore: string, codice: string, prestito?: string) {
     if (!this.trovaLibro(codice)) {
-      this.lista.push(new Libro(titolo, autore, codice, personaInPrestito));
+      this.lista.push(new Libro(titolo, autore, codice, prestito));
     }
     console.log(this.lista);
   }
@@ -87,7 +87,7 @@ export class Archivio {
     this.servizio.get().subscribe((risultato) => {
       let elenco = JSON.parse(risultato);
       elenco.map((libro: any) => {
-        this.aggiungiLibro(libro.titolo, libro.autore, libro.codice, libro.personaInPrestito);
+        this.aggiungiLibro(libro.titolo, libro.autore, libro.codice, libro.prestito);
       });
     });
   }
