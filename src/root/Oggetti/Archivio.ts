@@ -55,7 +55,6 @@ export class Archivio {
     if (!this.trovaLibro(codice)) {
       this.lista.push(new Libro(titolo, autore, codice, prestito));
     }
-    console.log(this.lista);
   }
 
   rimuoviLibro(codice: string) {

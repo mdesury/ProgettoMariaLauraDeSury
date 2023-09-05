@@ -14,7 +14,6 @@ export class Libro {
     } else {
       this.prestito = '';
     }
-
   }
 
   libero() {
