@@ -27,7 +27,6 @@ export class PrestitoComponent  implements OnInit{
         this.archivio.prendiInPrestito(this.codice, this.personaInPrestito);
         this.servizio.set(JSON.stringify(this.archivio.lista)).subscribe();
       }
-      
     }
   }
 

@@ -23,7 +23,7 @@ export class AggiungiComponent implements OnInit {
   }
   aggiungiLibro() {
     if (!this.titolo || !this.autore || !this.codice) {
-      this.errore = 'Devi compilare tutti i campi.';
+      this.errore = 'Bisogna compilare tutti i campi.';
     } else {
       this.errore = '';
       //this.archivio.aggiornaLista();
@@ -34,9 +34,11 @@ export class AggiungiComponent implements OnInit {
 
       this.messaggioAggiunta = 'Libro aggiunto alla libreria.';
       this.mostraAggiungi = false;
+      this.titolo= '';
+      this.autore = '';
+      this.codice = '';
     }
   }
-
 
   constructor(private servizio: Service) {}
 

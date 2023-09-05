@@ -9,7 +9,7 @@ export class Libro {
     this.autore = autore;
     this.codice = codice;
 
-    if(prestito) {
+    if (prestito) {
       this.prestito = prestito;
     } else {
       this.prestito = '';

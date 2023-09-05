@@ -19,14 +19,13 @@ export class Archivio {
             this.aggiungiLibro(libro.titolo, libro.autore, libro.codice, libro.prestito);
           });
         } catch (error) {
-          console.error('Errore durante il parsing del risultato:', error);
+          console.error('Errore durante il caricamento del risultato:', error);
         }
       },
       (errore) => {
         console.error('Errore nella richiesta HTTP:', errore);
       }
     );
-    
   }
 
   ricercaLibro(chiave: string) {
