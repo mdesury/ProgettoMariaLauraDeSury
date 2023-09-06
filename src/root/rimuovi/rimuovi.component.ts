@@ -12,7 +12,7 @@ export class RimuoviComponent implements OnInit {
   @Input() archivio = new Archivio(this.servizio);
   @Input() libro: Libro | undefined; 
   @Output() changeArchivio = new EventEmitter<any>();
-  risultatiRicerca: any[] = [];
+  
 
   rimuoviLibro(libro: Libro) {
     this.archivio.rimuoviLibro(libro.codice);
