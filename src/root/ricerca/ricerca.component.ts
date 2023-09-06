@@ -18,13 +18,12 @@ import { Libro } from './../Oggetti/Libro';
 export class RicercaComponent implements OnChanges {
   risultatiRicerca: Array<any> = [];
   ricerca: string = '';
-  mostraPulsantePrestito: boolean = false; // Aggiungi questa variabile
+  mostraPulsantePrestito: boolean = false; 
   libroScelto: Libro = new Libro('', '', '');
   libero = false;
   @Input() archivio = new Archivio(this.servizio);
 
   constructor(private servizio: Service) {
-    // this.archivio = new Archivio(this.servizio);
   }
 
   ricercaLibro() {
