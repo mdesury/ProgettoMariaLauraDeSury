@@ -12,10 +12,8 @@ export class AggiungiComponent implements OnInit {
   autore: string = '';
   codice: string = '';
   @Input() archivio = new Archivio(this.servizio);
-  //@Output() archivioChange = new EventEmitter<Archivio>();
   lista = this.archivio.lista;
   errore: string = '';
-  messaggioAggiunta: string = '';
   mostraAggiungi: boolean = false;
 
   bottoneAggiungi() {
@@ -26,13 +24,10 @@ export class AggiungiComponent implements OnInit {
       this.errore = 'Bisogna compilare tutti i campi.';
     } else {
       this.errore = '';
-      //this.archivio.aggiornaLista();
 
       this.archivio.aggiungiLibro(this.titolo, this.autore, this.codice);
       this.servizio.set(JSON.stringify(this.archivio.lista)).subscribe();
-      //this.archivioChange.emit(this.archivio);
 
-      this.messaggioAggiunta = 'Libro aggiunto alla libreria.';
       this.mostraAggiungi = false;
       this.titolo= '';
       this.autore = '';

@@ -8,6 +8,5 @@
   <input id="autore" [(ngModel)]="autore" placeholder="inserisci autore">
   <input id="codice" [(ngModel)]="codice" placeholder="inserisci codice">
   <button (click)="aggiungiLibro()">Aggiungi</button>
-  <p id="aggiunta">{{ messaggioAggiunta }}</p>
   <p *ngIf="errore">{{ errore }}</p>
 </div>
