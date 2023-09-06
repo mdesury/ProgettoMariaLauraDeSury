@@ -7,7 +7,6 @@ import { FormsModule } from '@angular/forms';
 import { RicercaComponent } from './ricerca/ricerca.component';
 import { AggiungiComponent } from './aggiungi/aggiungi.component';
 import {RimuoviComponent } from './rimuovi/rimuovi.component';
-import {PrestitoComponent } from './prestito/prestito.component';
 import {RestituisciComponent } from './restituisci/restituisci.component';
 import {PresoPrestitoComponent } from './preso-prestito/preso-prestito.component';
 import { RootComponent } from './root.component';
@@ -18,7 +17,6 @@ import { RootComponent } from './root.component';
     RicercaComponent,
     AggiungiComponent,
     RimuoviComponent,
-    PrestitoComponent,
     RestituisciComponent,
     PresoPrestitoComponent
   ],
