@@ -10,6 +10,7 @@ export class Archivio {
     this.lista = new Array<Libro>();
     this.servizio = servizio;
     this.libriPrestati = [];
+    
 
     this.servizio.get().subscribe(
       (risultato) => {
@@ -62,10 +63,6 @@ export class Archivio {
     });
   }
 
-  prendiLibri() {
-    return this.lista;
-  }
-
   prendiInPrestito(codice: string, persona: string) {
     let libro = this.trovaLibro(codice); 
     if (libro.libero()) {
@@ -78,6 +75,7 @@ export class Archivio {
     if (!libro.libero()) {
       libro.restituisci();
     }
+
   }
 }
 

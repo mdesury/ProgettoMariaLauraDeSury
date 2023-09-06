@@ -1,11 +1,4 @@
-import {
-  Component,
-  Input,
-  OnChanges,
-  EventEmitter,
-  SimpleChanges,
-  Output,
-} from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges} from '@angular/core';
 import { Archivio } from './../Oggetti/Archivio';
 import { Service } from './../service.service';
 import { Libro } from './../Oggetti/Libro';
