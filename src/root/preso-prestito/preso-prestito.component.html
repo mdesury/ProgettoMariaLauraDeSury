@@ -1,4 +1,7 @@
 <div class="centro">
   <input type="text" [(ngModel)]="persona" name="persona" placeholder="Inserisci nome ">
   <button (click)="prendiPrestito()">Prendi in prestito</button>
+  <div *ngIf="nomePersona" class="error-message">
+    Devi inserire un nome per poter effettuare il prestito.
+  </div>
 </div>

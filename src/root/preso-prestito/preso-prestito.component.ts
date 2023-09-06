@@ -13,17 +13,23 @@ export class PresoPrestitoComponent {
   @Input() libro = new Libro('', '', '');
   @Output() getChangeStatus = new EventEmitter<boolean>();
 
+  nomePersona = false;
   persona: string = ''; 
 
   constructor(private servizio: Service) {}
 
   prendiPrestito() {
+    if (this.persona.trim() === '') {
+      this.nomePersona = true;
+    } else {
+      this.nomePersona = false;
+
     if (this.archivio.trovaLibro(this.libro.codice).libero()) {
       this.archivio.prendiInPrestito(this.libro.codice, this.persona);
       this.servizio.set(JSON.stringify(this.archivio.lista)).subscribe();
       this.getChangeStatus.emit(false);
     }
 
-    
+  }
   }
 }
